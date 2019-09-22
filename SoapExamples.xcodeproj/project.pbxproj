@@ -1,0 +1,553 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF014DC6A9AEFEE6AFE4D6BF /* SoapWebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */; };
+		BF047063B7DEC0F6E8E5BCF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF077E3AD9385EAF61B469DF /* AppDelegate.swift */; };
+		BF05E9E8E432C5CBFD01C5A5 /* RosatomSoapWebServiceStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0856E981EB8F5B4CC519E1 /* RosatomSoapWebServiceStructs.swift */; };
+		BF07AE6851D923158EEF2EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0C5AA80BB744D5FB7337F4 /* Assets.xcassets */; };
+		BF07C255A9EC22438354479E /* SoapExamplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF045AB8519E807B98B05C3F /* SoapExamplesTests.swift */; };
+		BF0B7EA48E5523514709EF0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF06B579BBEDA0B0DA9CA2E8 /* Main.storyboard */; };
+		BF0C0A0E27B03DA2DDB7CB13 /* SoapExamplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0F94FD78995A8A155AB450 /* SoapExamplesUITests.swift */; };
+		BF0D34DFB53B2167A2C56F73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07A1F6F1DAC178917039B9 /* ViewController.swift */; };
+		BF0E4FEC69114B23950E653F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0821ECE11409A50D816F01 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF007619E5B5F144B1439ACD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF00C77E1FBEC2E9FE47A02A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF0F4641FDE3EFCBDE6DF1F1;
+			remoteInfo = SoapExamples;
+		};
+		BF03DA1E06B035B1E128C491 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF00C77E1FBEC2E9FE47A02A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF0F4641FDE3EFCBDE6DF1F1;
+			remoteInfo = SoapExamples;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BF000C8F0D9BFCC27A518FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		BF0421457F88D227EBA9363D /* SoapExamplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoapExamplesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF045AB8519E807B98B05C3F /* SoapExamplesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapExamplesTests.swift; sourceTree = "<group>"; };
+		BF077E3AD9385EAF61B469DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF07A1F6F1DAC178917039B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapWebServiceManager.swift; sourceTree = "<group>"; };
+		BF0856E981EB8F5B4CC519E1 /* RosatomSoapWebServiceStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosatomSoapWebServiceStructs.swift; sourceTree = "<group>"; };
+		BF088F799921802A2A600B07 /* SoapExamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoapExamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF089E05DF29670BC8DB42AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		BF0997D6EDE78AF72704F0DE /* SoapExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoapExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF09A0AC57015E52D519F79F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF0C5AA80BB744D5FB7337F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF0E04114F9EE0D080D66BBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		BF0EF325CF27F68E4F2B78E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF0F94FD78995A8A155AB450 /* SoapExamplesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapExamplesUITests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF0025E4692B3EE54FF1B253 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF0CBC7B7F654B0B31C64AE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF0F506B2FF8A5AC1E07D14D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF03571353C3A867409A377C /* SoapExamples */ = {
+			isa = PBXGroup;
+			children = (
+				BF089E05DF29670BC8DB42AB /* Info.plist */,
+				BF0C5AA80BB744D5FB7337F4 /* Assets.xcassets */,
+				BF0821ECE11409A50D816F01 /* LaunchScreen.storyboard */,
+				BF077E3AD9385EAF61B469DF /* AppDelegate.swift */,
+				BF06B579BBEDA0B0DA9CA2E8 /* Main.storyboard */,
+				BF07A1F6F1DAC178917039B9 /* ViewController.swift */,
+				BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */,
+				BF0856E981EB8F5B4CC519E1 /* RosatomSoapWebServiceStructs.swift */,
+			);
+			path = SoapExamples;
+			sourceTree = "<group>";
+		};
+		BF0376D64C61D733D9870129 /* SoapExamplesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BF000C8F0D9BFCC27A518FEC /* Info.plist */,
+				BF0F94FD78995A8A155AB450 /* SoapExamplesUITests.swift */,
+			);
+			path = SoapExamplesUITests;
+			sourceTree = "<group>";
+		};
+		BF075FD9170882AD06708002 /* SoapExamplesTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF0E04114F9EE0D080D66BBC /* Info.plist */,
+				BF045AB8519E807B98B05C3F /* SoapExamplesTests.swift */,
+			);
+			path = SoapExamplesTests;
+			sourceTree = "<group>";
+		};
+		BF078256D24B88AB8E2E4D35 = {
+			isa = PBXGroup;
+			children = (
+				BF0FEA07638866709FB35F8D /* Products */,
+				BF03571353C3A867409A377C /* SoapExamples */,
+				BF075FD9170882AD06708002 /* SoapExamplesTests */,
+				BF0376D64C61D733D9870129 /* SoapExamplesUITests */,
+			);
+			sourceTree = "<group>";
+		};
+		BF0FEA07638866709FB35F8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF0997D6EDE78AF72704F0DE /* SoapExamples.app */,
+				BF088F799921802A2A600B07 /* SoapExamplesTests.xctest */,
+				BF0421457F88D227EBA9363D /* SoapExamplesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF07E27DB75443BE4DE04D06 /* SoapExamplesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF02359E3573EC154DEE2646 /* Build configuration list for PBXNativeTarget "SoapExamplesUITests" */;
+			buildPhases = (
+				BF0AC0B3F00058AF1430EDD6 /* Sources */,
+				BF0F506B2FF8A5AC1E07D14D /* Frameworks */,
+				BF09D7AD6A30AE481A270C19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF0B602FFC3B246B04595515 /* PBXTargetDependency */,
+			);
+			name = SoapExamplesUITests;
+			productName = SoapExamplesUITests;
+			productReference = BF0421457F88D227EBA9363D /* SoapExamplesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		BF0EDAE29C9A21A9C138607A /* SoapExamplesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF048BDEB77F1159F3C2ED86 /* Build configuration list for PBXNativeTarget "SoapExamplesTests" */;
+			buildPhases = (
+				BF07F837491F5D4192F60964 /* Sources */,
+				BF0025E4692B3EE54FF1B253 /* Frameworks */,
+				BF0A2F297DC415C98D9A4CC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF0D563EE5E859C77152A1A7 /* PBXTargetDependency */,
+			);
+			name = SoapExamplesTests;
+			productName = SoapExamplesTests;
+			productReference = BF088F799921802A2A600B07 /* SoapExamplesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF0F4641FDE3EFCBDE6DF1F1 /* SoapExamples */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF051B2DF3CCCC9EFC50995B /* Build configuration list for PBXNativeTarget "SoapExamples" */;
+			buildPhases = (
+				BF06E0627E1F77CB9AD9872D /* Sources */,
+				BF0CBC7B7F654B0B31C64AE0 /* Frameworks */,
+				BF0E69244AB9644FBF6FF782 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoapExamples;
+			productName = SoapExamples;
+			productReference = BF0997D6EDE78AF72704F0DE /* SoapExamples.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF00C77E1FBEC2E9FE47A02A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "___FORMIKALAB___";
+				TargetAttributes = {
+					BF0F4641FDE3EFCBDE6DF1F1 = {
+						DevelopmentTeam = GPRH6MUWEJ;
+					};
+				};
+			};
+			buildConfigurationList = BF050E588AA6412269060CCF /* Build configuration list for PBXProject "SoapExamples" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = BF078256D24B88AB8E2E4D35;
+			productRefGroup = BF0FEA07638866709FB35F8D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF0F4641FDE3EFCBDE6DF1F1 /* SoapExamples */,
+				BF0EDAE29C9A21A9C138607A /* SoapExamplesTests */,
+				BF07E27DB75443BE4DE04D06 /* SoapExamplesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF09D7AD6A30AE481A270C19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF0A2F297DC415C98D9A4CC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF0E69244AB9644FBF6FF782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF07AE6851D923158EEF2EEC /* Assets.xcassets in Resources */,
+				BF0E4FEC69114B23950E653F /* LaunchScreen.storyboard in Resources */,
+				BF0B7EA48E5523514709EF0C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF06E0627E1F77CB9AD9872D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF047063B7DEC0F6E8E5BCF6 /* AppDelegate.swift in Sources */,
+				BF0D34DFB53B2167A2C56F73 /* ViewController.swift in Sources */,
+				BF014DC6A9AEFEE6AFE4D6BF /* SoapWebServiceManager.swift in Sources */,
+				BF05E9E8E432C5CBFD01C5A5 /* RosatomSoapWebServiceStructs.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF07F837491F5D4192F60964 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF07C255A9EC22438354479E /* SoapExamplesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF0AC0B3F00058AF1430EDD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF0C0A0E27B03DA2DDB7CB13 /* SoapExamplesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF0B602FFC3B246B04595515 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF0F4641FDE3EFCBDE6DF1F1 /* SoapExamples */;
+			targetProxy = BF03DA1E06B035B1E128C491 /* PBXContainerItemProxy */;
+		};
+		BF0D563EE5E859C77152A1A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF0F4641FDE3EFCBDE6DF1F1 /* SoapExamples */;
+			targetProxy = BF007619E5B5F144B1439ACD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF06B579BBEDA0B0DA9CA2E8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF0EF325CF27F68E4F2B78E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF0821ECE11409A50D816F01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF09A0AC57015E52D519F79F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF014DF30226638B565FDD7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GPRH6MUWEJ;
+				INFOPLIST_FILE = SoapExamples/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FormikaLab.SoapExamples;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF02E2E207E63F8DC5A99924 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SoapExamples.app/SoapExamples";
+				INFOPLIST_FILE = SoapExamplesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FormikaLab.SoapExamplesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+		BF03B85D6FC74E8E5FF7D710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SoapExamplesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FormikaLab.SoapExamplesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SoapExamples;
+			};
+			name = Release;
+		};
+		BF086FE2B3890B4B8E374800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SoapExamplesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FormikaLab.SoapExamplesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SoapExamples;
+			};
+			name = Debug;
+		};
+		BF0ADF8E9B3A2814E99408F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SoapExamples.app/SoapExamples";
+				INFOPLIST_FILE = SoapExamplesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FormikaLab.SoapExamplesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		BF0BD84588F7F51AFAA79AB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GPRH6MUWEJ;
+				INFOPLIST_FILE = SoapExamples/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = FormikaLab.SoapExamples;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BF0C146B1BD822E4C8033AB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF0F6CFF03FEEE3246183131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF02359E3573EC154DEE2646 /* Build configuration list for PBXNativeTarget "SoapExamplesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF086FE2B3890B4B8E374800 /* Debug */,
+				BF03B85D6FC74E8E5FF7D710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF048BDEB77F1159F3C2ED86 /* Build configuration list for PBXNativeTarget "SoapExamplesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF0ADF8E9B3A2814E99408F2 /* Debug */,
+				BF02E2E207E63F8DC5A99924 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF050E588AA6412269060CCF /* Build configuration list for PBXProject "SoapExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF0F6CFF03FEEE3246183131 /* Debug */,
+				BF0C146B1BD822E4C8033AB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF051B2DF3CCCC9EFC50995B /* Build configuration list for PBXNativeTarget "SoapExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF014DF30226638B565FDD7C /* Debug */,
+				BF0BD84588F7F51AFAA79AB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF00C77E1FBEC2E9FE47A02A /* Project object */;
+}
