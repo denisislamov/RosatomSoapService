@@ -23,7 +23,7 @@ class SoapWebServiceManager {
         soapWebServiceDelegate = soapWebServiceDelegateRef
     }
 
-    public func GetUserInfo(token : String) {
+    public func getUserInfo(token : String) {
         let soapAuthMessage : String = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n                <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n                    <soapenv:Header>\n                        <sdo:Token>\n                            <sdo:authtoken>\(token)</sdo:authtoken>\n                    </sdo:Token>\n                    </soapenv:Header>\n                    <soapenv:Body>\n                        <sdo:UserInfo></sdo:UserInfo>\n                    </soapenv:Body>\n                </soapenv:Envelope>"
         sendRequest(requests : soapAuthMessage, completion: { result in
             switch result {
@@ -37,7 +37,7 @@ class SoapWebServiceManager {
         })
     }
 
-    public func GetToken(login : String, pass : String, secret : String) {
+    public func getToken(login : String, pass : String, secret : String) {
         let soapAuthMessage : String = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n                <soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n                    <soap:Body>\n                    <Auth xmlns:ns1=\"http://sdo-test.scicet.local/\" username=\"\(login)\" password=\"\(pass)\" secret=\"\(secret)\"/>\n                    </soap:Body>\n                </soap:Envelope>"
 
         sendRequest(requests : soapAuthMessage, completion: { result in

@@ -22,12 +22,12 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
     }
 
     @IBAction func btnClicked(sender: AnyObject) {
-        soapWebServiceManager.GetToken(login: login, pass: pass, secret: secret)
+        soapWebServiceManager.getToken(login: login, pass: pass, secret: secret)
     }
 
     func TokenReceived(value : String) {
         print("token: " + value)
-        soapWebServiceManager.GetUserInfo(token: value)
+        soapWebServiceManager.getUserInfo(token: value)
     }
 
     func UserInfoReceived(value : UserInfo) {
