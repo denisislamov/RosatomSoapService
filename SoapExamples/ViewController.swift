@@ -25,16 +25,16 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
         soapWebServiceManager.getToken(login: login, pass: pass, secret: secret)
     }
 
-    func TokenReceived(value : String) {
+    func tokenReceived(value : String) {
         print("token: " + value)
         soapWebServiceManager.getUserInfo(token: value)
     }
 
-    func UserInfoReceived(value : UserInfo) {
+    func userInfoReceived(value : UserInfo) {
         print(value)
     }
 
-    func ErrorReceived(value : String) {
+    func errorReceived(value : String) {
         print("error: " + value)
     }
 }

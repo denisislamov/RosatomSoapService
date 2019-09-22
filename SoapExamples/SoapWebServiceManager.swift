@@ -11,9 +11,9 @@ enum SoapWebServiceResult<T> {
 }
 
 protocol SoapWebServiceDelegate : class {
-    func TokenReceived(value : String)
-    func UserInfoReceived(value : UserInfo)
-    func ErrorReceived(value : String)
+    func tokenReceived(value : String)
+    func userInfoReceived(value : UserInfo)
+    func errorReceived(value : String)
 }
 
 class SoapWebServiceManager {
@@ -31,7 +31,7 @@ class SoapWebServiceManager {
                 self.parsingXmlUserInfo(input: response);
                 break
             case SoapWebServiceResult.Failure(let error):
-                self.soapWebServiceDelegate?.ErrorReceived(value: error)
+                self.soapWebServiceDelegate?.errorReceived(value: error)
                 break
             }
         })
@@ -45,7 +45,7 @@ class SoapWebServiceManager {
             case SoapWebServiceResult.Success(let response):
                 self.parsingXmlToken(input: response)
             case SoapWebServiceResult.Failure(let error):
-                self.soapWebServiceDelegate?.ErrorReceived(value: error)
+                self.soapWebServiceDelegate?.errorReceived(value: error)
                 break
             }
         })
@@ -53,18 +53,18 @@ class SoapWebServiceManager {
 
     private func parsingXmlToken(input: String) -> SoapWebServiceResult<String> {
         if input.contains("<token>") {
-            soapWebServiceDelegate?.TokenReceived(value: input.slice(from: "<token>", to: "</token>")!)
+            soapWebServiceDelegate?.tokenReceived(value: input.slice(from: "<token>", to: "</token>")!)
             return SoapWebServiceResult.Success("Success get user token")
         }
 
         if input.contains("<soap:Fault>") {
             let errorMsg = input.slice(from: "<faultstring>", to: "</faultstring>")!
 
-            soapWebServiceDelegate?.ErrorReceived(value: errorMsg)
+            soapWebServiceDelegate?.errorReceived(value: errorMsg)
             return  SoapWebServiceResult.Failure(errorMsg)
         }
 
-        soapWebServiceDelegate?.ErrorReceived(value: "Unknown error")
+        soapWebServiceDelegate?.errorReceived(value: "Unknown error")
         return SoapWebServiceResult.Failure("Unknown error")
     }
 
@@ -76,17 +76,17 @@ class SoapWebServiceManager {
             userInfo.org      = input.slice(from: "<org>", to: "</org>")!
             userInfo.email    = input.slice(from: "<email>", to: "</email>")!
 
-            soapWebServiceDelegate?.UserInfoReceived(value: userInfo)
+            soapWebServiceDelegate?.userInfoReceived(value: userInfo)
             return SoapWebServiceResult.Success("Success get user info")
         }
 
         if input.contains("<soap:Fault>") {
             let errorMsg = input.slice(from: "<faultstring>", to: "</faultstring>")!
-            soapWebServiceDelegate?.ErrorReceived(value: errorMsg)
+            soapWebServiceDelegate?.errorReceived(value: errorMsg)
             return  SoapWebServiceResult.Failure(errorMsg)
 
         }
-        soapWebServiceDelegate?.ErrorReceived(value: "Unknown error")
+        soapWebServiceDelegate?.errorReceived(value: "Unknown error")
         return SoapWebServiceResult.Failure("Unknown error")
     }
 
