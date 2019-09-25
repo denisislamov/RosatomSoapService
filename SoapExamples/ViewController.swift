@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, SoapWebServiceDelegate {
-    let login : String  = "vg_02";
-    let pass : String   = "vg_02";
+
+    let login : String  = "vg_01";
+    let pass : String   = "vg_01";
     let secret : String = "test_secret";
 
     var soapWebServiceManager : SoapWebServiceManager!
@@ -28,9 +29,14 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
     func tokenReceived(value : String) {
         print("token: " + value)
         soapWebServiceManager.getUserInfo(token: value)
+        soapWebServiceManager.getUserGroup(token: "eyJ0b2tlbl9pZCI6IjY3NDA2NTIxMTczODI5MzMzMzMiLCJwZXJzb25faWQiOiI2NjM2OTg0NjU5ODMzNzQxNzg0IiwiZXhwaXJlZF9kYXRlIjoiMjUuMDkuMjAxOSAyMDo1Mjo1MSIsInJvbGVzIjpbInVzZXIiXX12")
     }
 
     func userInfoReceived(value : UserInfo) {
+        print(value)
+    }
+
+    func userGroupReceived(value: UserGroup) {
         print(value)
     }
 

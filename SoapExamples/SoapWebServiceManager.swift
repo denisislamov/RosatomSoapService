@@ -13,6 +13,7 @@ enum SoapWebServiceResult<T> {
 protocol SoapWebServiceDelegate : class {
     func tokenReceived(value : String)
     func userInfoReceived(value : UserInfo)
+    func userGroupReceived(value: UserGroup)
     func errorReceived(value : String)
 }
 
@@ -23,22 +24,8 @@ class SoapWebServiceManager {
         soapWebServiceDelegate = soapWebServiceDelegateRef
     }
 
-    public func getUserInfo(token : String) {
-        let soapAuthMessage : String = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n                <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n                    <soapenv:Header>\n                        <sdo:Token>\n                            <sdo:authtoken>\(token)</sdo:authtoken>\n                    </sdo:Token>\n                    </soapenv:Header>\n                    <soapenv:Body>\n                        <sdo:UserInfo></sdo:UserInfo>\n                    </soapenv:Body>\n                </soapenv:Envelope>"
-        sendRequest(requests : soapAuthMessage, completion: { result in
-            switch result {
-            case SoapWebServiceResult.Success(let response):
-                self.parsingXmlUserInfo(input: response);
-                break
-            case SoapWebServiceResult.Failure(let error):
-                self.soapWebServiceDelegate?.errorReceived(value: error)
-                break
-            }
-        })
-    }
-
     public func getToken(login : String, pass : String, secret : String) {
-        let soapAuthMessage : String = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n                <soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n                    <soap:Body>\n                    <Auth xmlns:ns1=\"http://sdo-test.scicet.local/\" username=\"\(login)\" password=\"\(pass)\" secret=\"\(secret)\"/>\n                    </soap:Body>\n                </soap:Envelope>"
+        let soapAuthMessage : String = RosatomSoapMessages.auth(login, pass, secret)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
             switch result {
@@ -57,15 +44,16 @@ class SoapWebServiceManager {
             return SoapWebServiceResult.Success("Success get user token")
         }
 
-        if input.contains("<soap:Fault>") {
-            let errorMsg = input.slice(from: "<faultstring>", to: "</faultstring>")!
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return  SoapWebServiceResult.Failure(errorDescription)
+    }
 
-            soapWebServiceDelegate?.errorReceived(value: errorMsg)
-            return  SoapWebServiceResult.Failure(errorMsg)
-        }
-
-        soapWebServiceDelegate?.errorReceived(value: "Unknown error")
-        return SoapWebServiceResult.Failure("Unknown error")
+    public func getUserInfo(token : String) {
+        let soapAuthMessage : String = RosatomSoapMessages.userInfo(token)
+        sendRequest(requests : soapAuthMessage, completion: { result in
+            self.soapRequestСompletion(result: result, parsingFunc: self.parsingXmlUserInfo)
+        })
     }
 
     private func parsingXmlUserInfo(input: String) -> SoapWebServiceResult<String> {
@@ -80,22 +68,61 @@ class SoapWebServiceManager {
             return SoapWebServiceResult.Success("Success get user info")
         }
 
-        if input.contains("<soap:Fault>") {
-            let errorMsg = input.slice(from: "<faultstring>", to: "</faultstring>")!
-            soapWebServiceDelegate?.errorReceived(value: errorMsg)
-            return  SoapWebServiceResult.Failure(errorMsg)
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return  SoapWebServiceResult.Failure(errorDescription)
+    }
 
+    public func getUserGroup(token : String) {
+        let soapAuthMessage : String = RosatomSoapMessages.userGroupInfo(token)
+
+        sendRequest(requests : soapAuthMessage, completion: { result in
+            self.soapRequestСompletion(result: result, parsingFunc: self.parsingUserGroup)
+        })
+    }
+
+    private func soapRequestСompletion(result : SoapWebServiceResult<String>, parsingFunc:(_:String) -> SoapWebServiceResult<String>) -> Void {
+        switch result {
+        case SoapWebServiceResult.Success(let response):
+            parsingFunc(response);
+            break
+        case SoapWebServiceResult.Failure(let error):
+            self.soapWebServiceDelegate?.errorReceived(value: error)
+            break
         }
-        soapWebServiceDelegate?.errorReceived(value: "Unknown error")
-        return SoapWebServiceResult.Failure("Unknown error")
+    }
+
+    // TODO - move xml parser to different function
+    private func parsingUserGroup(input: String) -> SoapWebServiceResult<String> {
+        if input.contains("<event>") {
+            let lines = input.split { $0.isNewline }
+            var result = lines.joined(separator: "\n")
+            result = result.slice(from: "Optional(", to: ")")!
+            let xmlParser = XMLParser(data: result.data(using: .utf16)!)
+
+            let delegate = UserGroupParserDelegate()
+            xmlParser.delegate = delegate
+
+            if xmlParser.parserError != nil {
+                print("parserError \(xmlParser.parserError.debugDescription)")
+
+                soapWebServiceDelegate?.errorReceived(value: xmlParser.parserError.debugDescription)
+                return SoapWebServiceResult.Failure(xmlParser.parserError.debugDescription)
+            }
+            if xmlParser.parse() {
+                soapWebServiceDelegate?.userGroupReceived(value: delegate.userGroup)
+                return SoapWebServiceResult.Success("Success get user group info")
+            }
+        }
+
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return SoapWebServiceResult.Failure(errorDescription)
     }
 
     private func sendRequest(requests : String, completion: @escaping (SoapWebServiceResult<String>) -> Void) {
-        let is_URL: String = "https://sdo.rosatomtech.ru/sdo-cicet/service/vgService.html"
-
-        let lobjRequest = NSMutableURLRequest(url: NSURL(string: is_URL)! as URL)
+        let lobjRequest = NSMutableURLRequest(url: NSURL(string: RosatomSoapMessages.soapServiceUrl)! as URL)
         let session = URLSession.shared
-        var _: NSError?
 
         lobjRequest.httpMethod = "POST"
         lobjRequest.httpBody = requests.data(using: .utf8)
@@ -113,6 +140,15 @@ class SoapWebServiceManager {
             }
         })
         task.resume()
+    }
+
+    private func errorHandler(value: String) -> String {
+        if value.contains("<soap:Fault>") {
+            let errorMsg = value.slice(from: "<faultstring>", to: "</faultstring>")!
+            return errorMsg
+        }
+
+        return "Unknown error"
     }
 }
 
