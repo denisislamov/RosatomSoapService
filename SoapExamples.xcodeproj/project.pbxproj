@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6371CD71233CC2F8001A386E /* UserGroupParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */; };
 		637A69092339A8ED00BD0914 /* RosatomSoapMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */; };
 		637A690B233A587300BD0914 /* SoapWebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */; };
+		BF046524F764B9CC2068375B /* UserScheduleParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0AF984EF8922199B10C148 /* UserScheduleParserDelegate.swift */; };
 		BF047063B7DEC0F6E8E5BCF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF077E3AD9385EAF61B469DF /* AppDelegate.swift */; };
 		BF05E9E8E432C5CBFD01C5A5 /* RosatomSoapWebServiceStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0856E981EB8F5B4CC519E1 /* RosatomSoapWebServiceStructs.swift */; };
 		BF07AE6851D923158EEF2EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0C5AA80BB744D5FB7337F4 /* Assets.xcassets */; };
@@ -37,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupParserDelegate.swift; sourceTree = "<group>"; };
 		637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosatomSoapMessages.swift; sourceTree = "<group>"; };
 		BF000C8F0D9BFCC27A518FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		BF0421457F88D227EBA9363D /* SoapExamplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoapExamplesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +52,7 @@
 		BF089E05DF29670BC8DB42AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		BF0997D6EDE78AF72704F0DE /* SoapExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoapExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF09A0AC57015E52D519F79F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF0AF984EF8922199B10C148 /* UserScheduleParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserScheduleParserDelegate.swift; sourceTree = "<group>"; };
 		BF0C5AA80BB744D5FB7337F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF0E04114F9EE0D080D66BBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		BF0EF325CF27F68E4F2B78E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,7 +95,9 @@
 				BF07A1F6F1DAC178917039B9 /* ViewController.swift */,
 				637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */,
 				BF0856E981EB8F5B4CC519E1 /* RosatomSoapWebServiceStructs.swift */,
+				6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */,
 				BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */,
+				BF0AF984EF8922199B10C148 /* UserScheduleParserDelegate.swift */,
 			);
 			path = SoapExamples;
 			sourceTree = "<group>";
@@ -260,7 +266,9 @@
 				637A69092339A8ED00BD0914 /* RosatomSoapMessages.swift in Sources */,
 				BF047063B7DEC0F6E8E5BCF6 /* AppDelegate.swift in Sources */,
 				BF0D34DFB53B2167A2C56F73 /* ViewController.swift in Sources */,
+				6371CD71233CC2F8001A386E /* UserGroupParserDelegate.swift in Sources */,
 				BF05E9E8E432C5CBFD01C5A5 /* RosatomSoapWebServiceStructs.swift in Sources */,
+				BF046524F764B9CC2068375B /* UserScheduleParserDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

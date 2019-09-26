@@ -14,6 +14,8 @@ protocol SoapWebServiceDelegate : class {
     func tokenReceived(value : String)
     func userInfoReceived(value : UserInfo)
     func userGroupReceived(value: UserGroup)
+    func userLessonReceived(value: [UserLesson])
+
     func errorReceived(value : String)
 }
 
@@ -81,6 +83,55 @@ class SoapWebServiceManager {
         })
     }
 
+    private func parsingUserGroup(input: String) -> SoapWebServiceResult<String> {
+        if input.contains("<event>") {
+            var result = input.removeEmptyLines();
+            result = result?.slice(from: "Optional(", to: ")")!
+
+            let delegate = UserGroupParserDelegate()
+            if xmlParserRespond(input: result!, xmlParserDelegate: delegate) {
+                soapWebServiceDelegate?.userGroupReceived(value: delegate.userGroup)
+                return SoapWebServiceResult.Success("Success get user group info")
+            }
+        }
+
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return SoapWebServiceResult.Failure(errorDescription)
+    }
+
+    public func getUserSchedule(token : String, eventId: String) {
+        let soapAuthMessage : String = RosatomSoapMessages.userSchedule(token: token, eventId: eventId)
+
+        sendRequest(requests : soapAuthMessage, completion: { result in
+            self.soapRequestСompletion(result: result, parsingFunc: self.parsingUserSchedule)
+        })
+    }
+
+    private func parsingUserSchedule(input: String) -> SoapWebServiceResult<String> {
+       if input.contains("<lessons>") {
+            var result = input.removeEmptyLines();
+            result = result?.slice(from: "Optional(", to: ")")!
+
+            let delegate = UserScheduleParserDelegate()
+            if xmlParserRespond(input: result!, xmlParserDelegate: delegate) {
+                soapWebServiceDelegate?.userLessonReceived(value: delegate.userLessons)
+                return SoapWebServiceResult.Success("Success get user schedule info")
+            }
+        }
+
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return SoapWebServiceResult.Failure(errorDescription)
+    }
+
+    private func xmlParserRespond(input: String, xmlParserDelegate : XMLParserDelegate ) -> Bool {
+        let xmlParser = XMLParser(data: (input.data(using: .utf16))!)
+        xmlParser.delegate = xmlParserDelegate
+
+        return xmlParser.parse()
+    }
+
     private func soapRequestСompletion(result : SoapWebServiceResult<String>, parsingFunc:(_:String) -> SoapWebServiceResult<String>) -> Void {
         switch result {
         case SoapWebServiceResult.Success(let response):
@@ -93,33 +144,6 @@ class SoapWebServiceManager {
     }
 
     // TODO - move xml parser to different function
-    private func parsingUserGroup(input: String) -> SoapWebServiceResult<String> {
-        if input.contains("<event>") {
-            let lines = input.split { $0.isNewline }
-            var result = lines.joined(separator: "\n")
-            result = result.slice(from: "Optional(", to: ")")!
-            let xmlParser = XMLParser(data: result.data(using: .utf16)!)
-
-            let delegate = UserGroupParserDelegate()
-            xmlParser.delegate = delegate
-
-            if xmlParser.parserError != nil {
-                print("parserError \(xmlParser.parserError.debugDescription)")
-
-                soapWebServiceDelegate?.errorReceived(value: xmlParser.parserError.debugDescription)
-                return SoapWebServiceResult.Failure(xmlParser.parserError.debugDescription)
-            }
-            if xmlParser.parse() {
-                soapWebServiceDelegate?.userGroupReceived(value: delegate.userGroup)
-                return SoapWebServiceResult.Success("Success get user group info")
-            }
-        }
-
-        let errorDescription = errorHandler(value: input)
-        soapWebServiceDelegate?.errorReceived(value: errorDescription)
-        return SoapWebServiceResult.Failure(errorDescription)
-    }
-
     private func sendRequest(requests : String, completion: @escaping (SoapWebServiceResult<String>) -> Void) {
         let lobjRequest = NSMutableURLRequest(url: NSURL(string: RosatomSoapMessages.soapServiceUrl)! as URL)
         let session = URLSession.shared
@@ -154,10 +178,15 @@ class SoapWebServiceManager {
 
 extension String {
     func slice(from: String, to: String) -> String? {
-        return (range(of: from)?.upperBound).flatMap { substringFrom in
+        (range(of: from)?.upperBound).flatMap { substringFrom in
             (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
                 String(self[substringFrom..<substringTo])
             }
         }
+    }
+
+    func removeEmptyLines() -> String? {
+        let lines = self.split { $0.isNewline }
+        return lines.joined(separator: "\n")
     }
 }

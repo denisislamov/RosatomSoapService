@@ -16,6 +16,11 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
 
     var soapWebServiceManager : SoapWebServiceManager!
 
+    var token : String = ""
+    var userInfo : UserInfo = UserInfo()
+    var userGroup : UserGroup = UserGroup()
+    var userLessons : [UserLesson] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,16 +33,26 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
 
     func tokenReceived(value : String) {
         print("token: " + value)
+        token = value
         soapWebServiceManager.getUserInfo(token: value)
-        soapWebServiceManager.getUserGroup(token: "eyJ0b2tlbl9pZCI6IjY3NDA2NTIxMTczODI5MzMzMzMiLCJwZXJzb25faWQiOiI2NjM2OTg0NjU5ODMzNzQxNzg0IiwiZXhwaXJlZF9kYXRlIjoiMjUuMDkuMjAxOSAyMDo1Mjo1MSIsInJvbGVzIjpbInVzZXIiXX12")
+        soapWebServiceManager.getUserGroup(token: value)
     }
 
     func userInfoReceived(value : UserInfo) {
         print(value)
+        userInfo = value
     }
 
     func userGroupReceived(value: UserGroup) {
         print(value)
+        userGroup = value
+
+        soapWebServiceManager.getUserSchedule(token: token, eventId: userGroup.eventId)
+    }
+
+    func userLessonReceived(value: [UserLesson]) {
+        print(value)
+        userLessons = value
     }
 
     func errorReceived(value : String) {
