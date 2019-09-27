@@ -30,13 +30,7 @@ class SoapWebServiceManager {
         let soapAuthMessage : String = RosatomSoapMessages.auth(login, pass, secret)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
-            switch result {
-            case SoapWebServiceResult.Success(let response):
-                self.parsingXmlToken(input: response)
-            case SoapWebServiceResult.Failure(let error):
-                self.soapWebServiceDelegate?.errorReceived(value: error)
-                break
-            }
+            self.soapRequestСompletion(result: result, parsingFunc: self.parsingXmlToken)
         })
     }
 
@@ -44,6 +38,24 @@ class SoapWebServiceManager {
         if input.contains("<token>") {
             soapWebServiceDelegate?.tokenReceived(value: input.slice(from: "<token>", to: "</token>")!)
             return SoapWebServiceResult.Success("Success get user token")
+        }
+
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return  SoapWebServiceResult.Failure(errorDescription)
+    }
+
+    public func logout(input: String) {
+        let soapAuthMessage : String = RosatomSoapMessages.logout(input)
+
+        sendRequest(requests : soapAuthMessage, completion: { result in
+            self.soapRequestСompletion(result: result, parsingFunc: self.logoutRespond)
+        })
+    }
+
+    private func logoutRespond(input: String) -> SoapWebServiceResult<String> {
+        if input.contains("LogoutResponse") {
+            return SoapWebServiceResult.Success("Success logout")
         }
 
         let errorDescription = errorHandler(value: input)

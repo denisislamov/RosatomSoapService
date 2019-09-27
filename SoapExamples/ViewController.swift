@@ -31,6 +31,10 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
         soapWebServiceManager.getToken(login: login, pass: pass, secret: secret)
     }
 
+    @IBAction func logoutBtnClicked(sender: AnyObject) {
+        soapWebServiceManager.logout(input: token)
+    }
+
     func tokenReceived(value : String) {
         print("token: " + value)
         token = value
