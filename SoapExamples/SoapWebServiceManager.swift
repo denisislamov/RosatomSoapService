@@ -27,7 +27,7 @@ class SoapWebServiceManager {
     }
 
     public func getToken(login : String, pass : String, secret : String) {
-        let soapAuthMessage : String = RosatomSoapMessages.auth(login, pass, secret)
+        let soapAuthMessage : String = RosatomSoapMessages.auth(login: login, pass: pass, secret: secret)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
             self.soapRequestСompletion(result: result, parsingFunc: self.parsingXmlToken)
@@ -45,8 +45,8 @@ class SoapWebServiceManager {
         return  SoapWebServiceResult.Failure(errorDescription)
     }
 
-    public func logout(input: String) {
-        let soapAuthMessage : String = RosatomSoapMessages.logout(input)
+    public func logout(token: String) {
+        let soapAuthMessage : String = RosatomSoapMessages.logout(token: token)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
             self.soapRequestСompletion(result: result, parsingFunc: self.logoutRespond)
@@ -64,7 +64,7 @@ class SoapWebServiceManager {
     }
 
     public func getUserInfo(token : String) {
-        let soapAuthMessage : String = RosatomSoapMessages.userInfo(token)
+        let soapAuthMessage : String = RosatomSoapMessages.userInfo(token: token)
         sendRequest(requests : soapAuthMessage, completion: { result in
             self.soapRequestСompletion(result: result, parsingFunc: self.parsingXmlUserInfo)
         })
@@ -88,7 +88,7 @@ class SoapWebServiceManager {
     }
 
     public func getUserGroup(token : String) {
-        let soapAuthMessage : String = RosatomSoapMessages.userGroupInfo(token)
+        let soapAuthMessage : String = RosatomSoapMessages.userGroupInfo(token: token)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
             self.soapRequestСompletion(result: result, parsingFunc: self.parsingUserGroup)
@@ -112,7 +112,7 @@ class SoapWebServiceManager {
         return SoapWebServiceResult.Failure(errorDescription)
     }
 
-    public func getUserSchedule(token : String, eventId: String) {
+    public func getUserSchedule(token: String, eventId: String) {
         let soapAuthMessage : String = RosatomSoapMessages.userSchedule(token: token, eventId: eventId)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
@@ -137,6 +137,47 @@ class SoapWebServiceManager {
         return SoapWebServiceResult.Failure(errorDescription)
     }
 
+    public func getUserMessages(token: String, id: String, messageCount: Int = 10, isMy: Int = 0) {
+        let soapAuthMessage : String = RosatomSoapMessages.userMessages(token: token, eventId: id,  messageCount: messageCount, isMy : isMy)
+
+        sendRequest(requests: soapAuthMessage, completion: { result in
+            self.soapRequestСompletion(result: result, parsingFunc: self.parsingUserMessages)
+        })
+    }
+
+    public func getUserMessagesFromPool(token: String, id: String) {
+        let soapAuthMessage : String = RosatomSoapMessages.userMessagesFromPool(token: token, eventId: id)
+
+        sendRequest(requests : soapAuthMessage, completion: { result in
+            self.soapRequestСompletion(result: result, parsingFunc: self.parsingUserMessages)
+        })
+    }
+
+    // TODO доделать
+     private func parsingUserMessages(input: String) -> SoapWebServiceResult<String> {
+        print(input)
+
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return SoapWebServiceResult.Failure(errorDescription)
+    }
+
+    public func sendUserMessage(token: String, id: String) {
+        let soapAuthMessage : String = RosatomSoapMessages.userMessagesFromPool(token: token, eventId: id)
+
+        sendRequest(requests : soapAuthMessage, completion: { result in
+            self.soapRequestСompletion(result: result, parsingFunc: self.parsingSendUserMessageRespond)
+        })
+    }
+
+    private func parsingSendUserMessageRespond(input: String) -> SoapWebServiceResult<String> {
+        print(input)
+
+        let errorDescription = errorHandler(value: input)
+        soapWebServiceDelegate?.errorReceived(value: errorDescription)
+        return SoapWebServiceResult.Failure(errorDescription)
+    }
+
     private func xmlParserRespond(input: String, xmlParserDelegate : XMLParserDelegate ) -> Bool {
         let xmlParser = XMLParser(data: (input.data(using: .utf16))!)
         xmlParser.delegate = xmlParserDelegate
@@ -144,7 +185,7 @@ class SoapWebServiceManager {
         return xmlParser.parse()
     }
 
-    private func soapRequestСompletion(result : SoapWebServiceResult<String>, parsingFunc:(_:String) -> SoapWebServiceResult<String>) -> Void {
+    private func soapRequestСompletion(result: SoapWebServiceResult<String>, parsingFunc:(_:String) -> SoapWebServiceResult<String>) -> Void {
         switch result {
         case SoapWebServiceResult.Success(let response):
             parsingFunc(response);

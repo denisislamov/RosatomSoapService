@@ -45,3 +45,9 @@ struct UserLesson {
     public var lector : String = ""
     public var form : String = ""
 }
+
+struct Message {
+    public var senderId : String = ""
+    public var text : String = ""
+    public var date : String = ""
+}

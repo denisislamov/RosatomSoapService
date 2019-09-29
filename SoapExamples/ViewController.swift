@@ -32,7 +32,7 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
     }
 
     @IBAction func logoutBtnClicked(sender: AnyObject) {
-        soapWebServiceManager.logout(input: token)
+        soapWebServiceManager.logout(token: token)
     }
 
     func tokenReceived(value : String) {
@@ -52,6 +52,7 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
         userGroup = value
 
         soapWebServiceManager.getUserSchedule(token: token, eventId: userGroup.eventId)
+        soapWebServiceManager.getUserMessages(token: token, id: userGroup.eventId)
     }
 
     func userLessonReceived(value: [UserLesson]) {
