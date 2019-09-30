@@ -42,4 +42,20 @@ class RosatomSoapMessages {
     public static func sendUserMessage(token: String, eventId: String , message: String , receiverId: String) -> String {
         "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:SendMsgs>\n         <sdo:event_id>\(eventId)</sdo:event_id>\n         <sdo:message><![CDATA[\(message)]]></sdo:message>\n         <sdo:to_person_id>\(receiverId)</sdo:to_person_id>\n      </sdo:SendMsgs>\n   </soapenv:Body>\n</soapenv:Envelope>"
     }
+
+    public static func sendInAppUserToken(token: String, inAppToken: String) -> String {
+           "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:SetPushToken>\n         <sdo:token>\(inAppToken)</sdo:token>\n         <sdo:app_type>virtual_guide_mobile</sdo:app_type>\n      </sdo:SetPushToken>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
+
+    public static func getInAppUserToken(token: String) -> String {
+           "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetPushToken>\n         <sdo:app_type>virtual_guide_mobile</sdo:app_type>\n      </sdo:GetPushToken>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
+
+    public static func sendAnalyticsData(token: String, data: String) -> String {
+           "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:SetLog>\n         <sdo:log><![CDATA[\(data)\n         ]]></sdo:log>\n      </sdo:SetLog>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
+
+    public static func getTutorEvents(token: String) -> String {
+           "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetTutorEvents></sdo:GetTutorEvents>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
 }

@@ -60,6 +60,14 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
         userLessons = value
     }
 
+    func userMessageReceived(value: [Message]) {
+
+    }
+
+    func userInAppTokenReceived(value: String) {
+
+    }
+    
     func errorReceived(value : String) {
         print("error: " + value)
     }
