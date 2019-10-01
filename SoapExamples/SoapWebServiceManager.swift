@@ -171,6 +171,8 @@ class SoapWebServiceManager {
                 soapWebServiceDelegate?.userMessageReceived(value: delegate.userMessages)
                 return SoapWebServiceResult.Success("Success get user messages")
             }
+        } else if input.contains("GetMsgsResponse") {
+            return SoapWebServiceResult.Success("No messages for this user or event")
         }
 
         let errorDescription = errorHandler(value: input)
