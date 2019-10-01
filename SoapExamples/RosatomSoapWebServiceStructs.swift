@@ -47,7 +47,10 @@ struct UserLesson {
 }
 
 struct Message {
-    public var senderId : String = ""
+    public var fromPersonId : String = ""
+    public var toPersonId : String = ""
     public var text : String = ""
     public var date : String = ""
+    public var isNew : String = ""
+    public var isMy : String = ""
 }

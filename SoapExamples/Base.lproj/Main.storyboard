@@ -16,33 +16,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25d-DE-g5T">
-                                <rect key="frame" x="160.5" y="433" width="93" height="30"/>
-                                <state key="normal" title="Test requests"/>
-                                <connections>
-                                    <action selector="btnClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oQp-ap-C85"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxS-KS-nw1">
-                                <rect key="frame" x="185" y="608" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="logout"/>
-                                <connections>
-                                    <action selector="logoutBtnClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EPd-eL-0h1"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="gGM-ay-cr1">
+                                <rect key="frame" x="122" y="242" width="171" height="412"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25d-DE-g5T">
+                                        <rect key="frame" x="0.0" y="0.0" width="171" height="30"/>
+                                        <state key="normal" title="Test requests"/>
+                                        <connections>
+                                            <action selector="btnClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oQp-ap-C85"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oy0-J0-ZS7" userLabel="Message Text Field">
+                                        <rect key="frame" x="0.0" y="63" width="171" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYN-Ps-ie2">
+                                        <rect key="frame" x="0.0" y="130" width="171" height="30"/>
+                                        <state key="normal" title="Send Message"/>
+                                        <connections>
+                                            <action selector="SendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cnh-xd-x2T"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0w5-Je-O0E" userLabel="Get my Messages">
+                                        <rect key="frame" x="0.0" y="193" width="171" height="30"/>
+                                        <state key="normal" title="Get my Messages"/>
+                                        <connections>
+                                            <action selector="GetMyMessages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="55t-0R-KPa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrW-Yz-wuG" userLabel="Get Messages">
+                                        <rect key="frame" x="0.0" y="256" width="171" height="30"/>
+                                        <state key="normal" title="Get Messages"/>
+                                        <connections>
+                                            <action selector="GetMessages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ChG-FR-g2s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09Q-A2-dYj" userLabel="Get Messages From Pool">
+                                        <rect key="frame" x="0.0" y="319" width="171" height="30"/>
+                                        <state key="normal" title="Get Messages From Pool"/>
+                                        <connections>
+                                            <action selector="GetMessagesFromPool:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gaN-lc-DiA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxS-KS-nw1">
+                                        <rect key="frame" x="0.0" y="382" width="171" height="30"/>
+                                        <state key="normal" title="logout"/>
+                                        <connections>
+                                            <action selector="logoutBtnClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EPd-eL-0h1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="25d-DE-g5T" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1G5-mf-qJ1"/>
-                            <constraint firstItem="25d-DE-g5T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jIl-sH-t73"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gGM-ay-cr1" secondAttribute="trailing" constant="121" id="9vw-Ht-Jny"/>
+                            <constraint firstItem="gGM-ay-cr1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="dCL-mY-X1g"/>
+                            <constraint firstItem="gGM-ay-cr1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="198" id="dWC-rR-O5d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gGM-ay-cr1" secondAttribute="bottom" constant="208" id="jAh-w3-AxU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="myMessage" destination="Oy0-J0-ZS7" id="IpD-Uw-G39"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="123"/>
+            <point key="canvasLocation" x="137.68115942028987" y="122.54464285714285"/>
         </scene>
     </scenes>
 </document>

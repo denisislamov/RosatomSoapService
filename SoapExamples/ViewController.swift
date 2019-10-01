@@ -21,6 +21,8 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
     var userGroup : UserGroup = UserGroup()
     var userLessons : [UserLesson] = []
 
+    @IBOutlet weak var myMessage: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +31,22 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
 
     @IBAction func btnClicked(sender: AnyObject) {
         soapWebServiceManager.getToken(login: login, pass: pass, secret: secret)
+    }
+
+    @IBAction func SendMessage(_ sender: Any) {
+        soapWebServiceManager.sendUserMessage(token: token, eventId: userGroup.eventId, message: myMessage.text!, receiverId: userGroup.contacts[0].personId)
+    }
+
+    @IBAction func GetMyMessages(_ sender: Any) {
+        soapWebServiceManager.getUserMessages(token: token, id: userGroup.eventId, messageCount: 10, isMy: 1)
+    }
+
+    @IBAction func GetMessages(_ sender: Any) {
+        soapWebServiceManager.getUserMessages(token: token, id: userGroup.eventId, messageCount: 10, isMy: 0)
+    }
+
+    @IBAction func GetMessagesFromPool(_ sender: Any) {
+        soapWebServiceManager.getUserMessagesFromPool(token: token, id: userGroup.eventId)
     }
 
     @IBAction func logoutBtnClicked(sender: AnyObject) {
@@ -61,11 +79,11 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
     }
 
     func userMessageReceived(value: [Message]) {
-
+        print(value)
     }
 
     func userInAppTokenReceived(value: String) {
-
+        print(value)
     }
     
     func errorReceived(value : String) {
