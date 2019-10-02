@@ -53,6 +53,18 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
         soapWebServiceManager.logout(token: token)
     }
 
+    @IBAction func SendInAppToken(_ sender: Any) {
+        soapWebServiceManager.sendInAppUserToken(token: token, inAppToken: "abcd12345")
+    }
+
+    @IBAction func GetInAppToken(_ sender: Any) {
+        soapWebServiceManager.getInAppUserToken(token: token)
+    }
+
+    @IBAction func SendAnalyticsData(_ sender: Any) {
+        soapWebServiceManager.sendAnalyticsData(token: token, data: "1,2,3,4,5")
+    }
+
     func tokenReceived(value : String) {
         print("token: " + value)
         token = value

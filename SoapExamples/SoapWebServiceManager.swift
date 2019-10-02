@@ -37,7 +37,6 @@ class SoapWebServiceManager {
     }
 
     private func parsingXmlToken(input: String) -> SoapWebServiceResult<String> {
-        print(input)
         if input.contains("<token>") {
             soapWebServiceDelegate?.tokenReceived(value: input.slice(from: "<token>", to: "</token>")!)
             return SoapWebServiceResult.Success("Success get user token")
@@ -171,7 +170,7 @@ class SoapWebServiceManager {
                 soapWebServiceDelegate?.userMessageReceived(value: delegate.userMessages)
                 return SoapWebServiceResult.Success("Success get user messages")
             }
-        } else if input.contains("GetMsgsResponse") {
+        } else if input.contains("GetMsgsResponse") || input.contains("GetMsgFromPoolResponse") {
             return SoapWebServiceResult.Success("No messages for this user or event")
         }
 
@@ -217,7 +216,7 @@ class SoapWebServiceManager {
         return SoapWebServiceResult.Failure(errorDescription)
     }
 
-    private func sendInAppUserToken(token: String, inAppToken: String) {
+    public func sendInAppUserToken(token: String, inAppToken: String) {
          let soapAuthMessage : String = RosatomSoapMessages.sendInAppUserToken(token: token, inAppToken: inAppToken)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
@@ -226,14 +225,16 @@ class SoapWebServiceManager {
     }
 
     private func parsingSendInAppUserTokenRespond(input: String) -> SoapWebServiceResult<String> {
-        print(input)
+        if input.contains("SetPushTokenResponse") {
+            return SoapWebServiceResult.Success("Success send inApp token")
+        }
 
         let errorDescription = errorHandler(value: input)
         soapWebServiceDelegate?.errorReceived(value: errorDescription)
         return SoapWebServiceResult.Failure(errorDescription)
     }
 
-    private func getInAppUserToken(token: String) {
+    public func getInAppUserToken(token: String) {
         let soapAuthMessage : String = RosatomSoapMessages.getInAppUserToken(token: token)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
@@ -242,14 +243,19 @@ class SoapWebServiceManager {
     }
 
     private func parsingInAppUserToken(input: String) -> SoapWebServiceResult<String> {
-        print(input)
+        if input.contains("<token>") {
+            soapWebServiceDelegate?.userInAppTokenReceived(value: input.slice(from: "<token>", to: "</token>")!)
+            return SoapWebServiceResult.Success("Success get user inApp token")
+        } else if input.contains("<GetPushTokenResponse>") {
+            return SoapWebServiceResult.Success("No inApp token for this user")
+        }
 
         let errorDescription = errorHandler(value: input)
         soapWebServiceDelegate?.errorReceived(value: errorDescription)
         return SoapWebServiceResult.Failure(errorDescription)
     }
 
-    private func sendAnalyticsData(token: String, data: String) {
+    public func sendAnalyticsData(token: String, data: String) {
         let soapAuthMessage : String = RosatomSoapMessages.sendAnalyticsData(token: token, data: data)
 
         sendRequest(requests : soapAuthMessage, completion: { result in
@@ -258,7 +264,9 @@ class SoapWebServiceManager {
     }
 
     private func parsingSendAnalyticsDataRespond(input: String) -> SoapWebServiceResult<String> {
-        print(input)
+        if input.contains("SetLogResponse") {
+            return SoapWebServiceResult.Success("Success send analytics data")
+        }
 
         let errorDescription = errorHandler(value: input)
         soapWebServiceDelegate?.errorReceived(value: errorDescription)
