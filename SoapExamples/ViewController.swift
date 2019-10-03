@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, SoapWebServiceDelegate {
+class ViewController: UIViewController, SoapWebServiceDelegate, SoapServiceManagerDelegate, AuthSoapServiceManagerDelegate {
 
     let login : String  = "vg_01";
     let pass : String   = "vg_01";
     let secret : String = "test_secret";
 
     var soapWebServiceManager : SoapWebServiceManager!
+    var authSoapServiceManager : AuthSoapServiceManager!
 
     var token : String = ""
     var userInfo : UserInfo = UserInfo()
@@ -27,10 +28,11 @@ class ViewController: UIViewController, SoapWebServiceDelegate {
         super.viewDidLoad()
 
         soapWebServiceManager = SoapWebServiceManager(soapWebServiceDelegateRef: self);
+        authSoapServiceManager = AuthSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
     }
 
     @IBAction func btnClicked(sender: AnyObject) {
-        soapWebServiceManager.getToken(login: login, pass: pass, secret: secret)
+        authSoapServiceManager.getToken(login: login, pass: pass, secret: secret)
     }
 
     @IBAction func SendMessage(_ sender: Any) {
