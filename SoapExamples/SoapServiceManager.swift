@@ -26,7 +26,7 @@ class SoapServiceManager {
         soapServiceUrl = soapUrl
     }
 
-    private func xmlParserRespond(input: String, xmlParserDelegate : XMLParserDelegate ) -> Bool {
+    public func xmlParserRespond(input: String, xmlParserDelegate : XMLParserDelegate ) -> Bool {
         let xmlParser = XMLParser(data: (input.data(using: .utf16))!)
         xmlParser.delegate = xmlParserDelegate
 
@@ -76,48 +76,17 @@ class SoapServiceManager {
     }
 }
 
-protocol AuthSoapServiceManagerDelegate : SoapServiceManagerDelegate {
-    func tokenReceived(value : String)
-    func userInfoReceived(value : UserInfo)
-}
-
-class AuthSoapServiceManager : SoapServiceManager {
-    public func getToken(login : String, pass : String, secret : String) {
-       let soapAuthMessage : String = RosatomSoapMessages.auth(login: login, pass: pass, secret: secret)
-
-       sendRequest(requests : soapAuthMessage, completion: { result in
-           self.soapRequestСompletion(result: result, parsingFunc: self.parsingXmlToken)
-       })
+extension String {
+    func slice(from: String, to: String) -> String? {
+        (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
+        }
     }
 
-    private func parsingXmlToken(input: String) -> SoapServiceResult<String> {
-       if input.contains("<token>") {
-           if let authSoapServiceManagerDelegate =  soapServiceManagerDelegate as? AuthSoapServiceManagerDelegate {
-               authSoapServiceManagerDelegate.tokenReceived(value: input.slice(from: "<token>", to: "</token>")!)
-               return SoapServiceResult.Success("Success get user token")
-           }
-       }
-
-       let errorDescription = errorHandler(value: input)
-       soapServiceManagerDelegate?.errorReceived(value: errorDescription)
-       return  SoapServiceResult.Failure(errorDescription)
-    }
-
-    public func logout(token: String) {
-       let soapAuthMessage : String = RosatomSoapMessages.logout(token: token)
-
-       sendRequest(requests : soapAuthMessage, completion: { result in
-           self.soapRequestСompletion(result: result, parsingFunc: self.logoutRespond)
-       })
-    }
-
-    private func logoutRespond(input: String) -> SoapServiceResult<String> {
-       if input.contains("LogoutResponse") {
-           return SoapServiceResult.Success("Success logout")
-       }
-
-       let errorDescription = errorHandler(value: input)
-       soapServiceManagerDelegate?.errorReceived(value: errorDescription)
-       return  SoapServiceResult.Failure(errorDescription)
+    func removeEmptyLines() -> String? {
+        let lines = self.split { $0.isNewline }
+        return lines.joined(separator: "\n")
     }
 }

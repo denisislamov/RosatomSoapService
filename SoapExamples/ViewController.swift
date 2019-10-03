@@ -8,14 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController, SoapWebServiceDelegate, SoapServiceManagerDelegate, AuthSoapServiceManagerDelegate {
-
+class ViewController: UIViewController,
+                      SoapServiceManagerDelegate,
+                      AuthSoapServiceManagerDelegate,
+                      UserInfoSoapServiceManagerDelegate,
+                      UserScheduleSoapServiceManagerDelegate,
+                      UserMessageSoapServiceManagerDelegate,
+                      UserInAppSoapServiceManagerDelegate {
     let login : String  = "vg_01";
     let pass : String   = "vg_01";
     let secret : String = "test_secret";
 
-    var soapWebServiceManager : SoapWebServiceManager!
     var authSoapServiceManager : AuthSoapServiceManager!
+    var userInfoSoapServiceManager : UserInfoSoapServiceManager!
+    var userScheduleSoapServiceManager : UserScheduleSoapServiceManager!
+    var userMessageSoapServiceManager : UserMessageSoapServiceManager!
+    var userInAppSoapServiceManager: UserInAppSoapServiceManager!
+    var analyticsDataSoapServiceManager : AnalyticsDataSoapServiceManager!
 
     var token : String = ""
     var userInfo : UserInfo = UserInfo()
@@ -27,8 +36,13 @@ class ViewController: UIViewController, SoapWebServiceDelegate, SoapServiceManag
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        soapWebServiceManager = SoapWebServiceManager(soapWebServiceDelegateRef: self);
-        authSoapServiceManager = AuthSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        authSoapServiceManager         = AuthSoapServiceManager        (soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        userInfoSoapServiceManager     = UserInfoSoapServiceManager    (soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        userScheduleSoapServiceManager = UserScheduleSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        userMessageSoapServiceManager  = UserMessageSoapServiceManager (soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        userInAppSoapServiceManager    = UserInAppSoapServiceManager   (soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        analyticsDataSoapServiceManager = AnalyticsDataSoapServiceManager(soapWebServiceDelegateRef: self,
+                                                                          soapUrl: RosatomSoapMessages.soapServiceUrl)
     }
 
     @IBAction func btnClicked(sender: AnyObject) {
@@ -36,42 +50,42 @@ class ViewController: UIViewController, SoapWebServiceDelegate, SoapServiceManag
     }
 
     @IBAction func SendMessage(_ sender: Any) {
-        soapWebServiceManager.sendUserMessage(token: token, eventId: userGroup.eventId, message: myMessage.text!, receiverId: userGroup.contacts[0].personId)
+        userMessageSoapServiceManager.sendUserMessage(token: token, eventId: userGroup.eventId, message: myMessage.text!, receiverId: userGroup.contacts[0].personId)
     }
 
     @IBAction func GetMyMessages(_ sender: Any) {
-        soapWebServiceManager.getUserMessages(token: token, id: userGroup.eventId, messageCount: 10, isMy: 1)
+        userMessageSoapServiceManager.getUserMessages(token: token, id: userGroup.eventId, messageCount: 10, isMy: 1)
     }
 
     @IBAction func GetMessages(_ sender: Any) {
-        soapWebServiceManager.getUserMessages(token: token, id: userGroup.eventId, messageCount: 10, isMy: 0)
+        userMessageSoapServiceManager.getUserMessages(token: token, id: userGroup.eventId, messageCount: 10, isMy: 0)
     }
 
     @IBAction func GetMessagesFromPool(_ sender: Any) {
-        soapWebServiceManager.getUserMessagesFromPool(token: token, id: userGroup.eventId)
+        userMessageSoapServiceManager.getUserMessagesFromPool(token: token, id: userGroup.eventId)
     }
 
     @IBAction func logoutBtnClicked(sender: AnyObject) {
-        soapWebServiceManager.logout(token: token)
+        authSoapServiceManager.logout(token: token)
     }
 
     @IBAction func SendInAppToken(_ sender: Any) {
-        soapWebServiceManager.sendInAppUserToken(token: token, inAppToken: "abcd12345")
+        userInAppSoapServiceManager.sendInAppUserToken(token: token, inAppToken: "abcd12345")
     }
 
     @IBAction func GetInAppToken(_ sender: Any) {
-        soapWebServiceManager.getInAppUserToken(token: token)
+        userInAppSoapServiceManager.getInAppUserToken(token: token)
     }
 
     @IBAction func SendAnalyticsData(_ sender: Any) {
-        soapWebServiceManager.sendAnalyticsData(token: token, data: "1,2,3,4,5")
+        analyticsDataSoapServiceManager.sendAnalyticsData(token: token, data: "1,2,3,4,5")
     }
 
     func tokenReceived(value : String) {
         print("token: " + value)
         token = value
-        soapWebServiceManager.getUserInfo(token: value)
-        soapWebServiceManager.getUserGroup(token: value)
+        userInfoSoapServiceManager.getUserInfo(token: value)
+        userInfoSoapServiceManager.getUserGroup(token: value)
     }
 
     func userInfoReceived(value : UserInfo) {
@@ -83,11 +97,11 @@ class ViewController: UIViewController, SoapWebServiceDelegate, SoapServiceManag
         print(value)
         userGroup = value
 
-        soapWebServiceManager.getUserSchedule(token: token, eventId: userGroup.eventId)
-        soapWebServiceManager.getUserMessages(token: token, id: userGroup.eventId)
+        userScheduleSoapServiceManager.getUserSchedule(token: token, eventId: userGroup.eventId)
+        userMessageSoapServiceManager.getUserMessages(token: token, id: userGroup.eventId)
     }
 
-    func userLessonReceived(value: [UserLesson]) {
+    func userLessonsReceived(value: [UserLesson]) {
         print(value)
         userLessons = value
     }
