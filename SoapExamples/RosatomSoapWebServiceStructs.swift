@@ -5,6 +5,13 @@
 
 import Foundation
 
+struct TokenInfo {
+    public var tokenId : String = ""
+    public var personId : String = ""
+    public var expiredDate : String = ""
+    public var roles : String = ""
+}
+
 struct UserInfo {
     public var fullName : String = ""
     public var position : String = ""

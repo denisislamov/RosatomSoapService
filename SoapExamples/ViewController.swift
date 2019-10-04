@@ -14,7 +14,7 @@ class ViewController: UIViewController,
                       UserInfoSoapServiceManagerDelegate,
                       UserScheduleSoapServiceManagerDelegate,
                       UserMessageSoapServiceManagerDelegate,
-                      UserInAppSoapServiceManagerDelegate {
+UserInAppSoapServiceManagerDelegate {
     let login : String  = "vg_01";
     let pass : String   = "vg_01";
     let secret : String = "test_secret";
@@ -84,8 +84,13 @@ class ViewController: UIViewController,
     func tokenReceived(value : String) {
         print("token: " + value)
         token = value
+        print(authSoapServiceManager.parseDecodeToken(input: token))
         userInfoSoapServiceManager.getUserInfo(token: value)
         userInfoSoapServiceManager.getUserGroup(token: value)
+    }
+
+    func tokenInfoReceived(value: TokenInfo) {
+        print("\(value)")
     }
 
     func userInfoReceived(value : UserInfo) {

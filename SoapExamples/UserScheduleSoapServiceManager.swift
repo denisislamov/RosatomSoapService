@@ -22,7 +22,8 @@ class UserScheduleSoapServiceManager : SoapServiceManager {
     }
 
     private func parsingUserSchedule(input: String) -> SoapServiceResult<String> {
-       if input.contains("<lessons>") {
+        print(input)
+        if input.contains("<lessons>") {
             var result = input.removeEmptyLines();
             result = result?.slice(from: "Optional(", to: ")")!
 

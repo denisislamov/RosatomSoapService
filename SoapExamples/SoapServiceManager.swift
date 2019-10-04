@@ -55,12 +55,15 @@ class SoapServiceManager {
         lobjRequest.addValue("http://www.cgsapi.com/GetSystemStatus", forHTTPHeaderField: "SOAPAction")
 
         let task = session.dataTask(with: lobjRequest as URLRequest, completionHandler: { (data, response, error) -> Void in
-            let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-
-            if error != nil {
-                completion(SoapServiceResult.Failure(error.debugDescription))
+            if data != nil {
+                let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                if error != nil {
+                    completion(SoapServiceResult.Failure(error.debugDescription))
+                } else {
+                    completion(SoapServiceResult.Success(String(describing: strData)))
+                }
             } else {
-                completion(SoapServiceResult.Success(String(describing: strData)))
+                completion(SoapServiceResult.Failure("Error: Check your connection"))
             }
         })
         task.resume()

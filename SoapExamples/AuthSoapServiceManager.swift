@@ -10,6 +10,7 @@ import Foundation
 
 protocol AuthSoapServiceManagerDelegate : SoapServiceManagerDelegate {
     func tokenReceived(value : String)
+    func tokenInfoReceived(value : TokenInfo)
 }
 
 class AuthSoapServiceManager : SoapServiceManager {
@@ -50,5 +51,40 @@ class AuthSoapServiceManager : SoapServiceManager {
        let errorDescription = errorHandler(value: input)
        soapServiceManagerDelegate?.errorReceived(value: errorDescription)
        return  SoapServiceResult.Failure(errorDescription)
+    }
+
+    private func decodeToken(token : String) -> String {
+        return String(data: Data(base64Encoded: token)!, encoding: .utf8)!
+    }
+
+    public func parseDecodeToken(input: String) {
+        let data = Data(decodeToken(token: input).utf8)
+
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                var tokenInfo : TokenInfo = TokenInfo()
+                if let token_id = json["token_id"] {
+                    tokenInfo.tokenId = "\(token_id)"
+                }
+
+                if let person_id = json["person_id"] {
+                    tokenInfo.personId = "\(person_id)"
+                }
+
+                if let expired_date = json["expired_date"] {
+                    tokenInfo.expiredDate = "\(expired_date)"
+                }
+
+                if let roles = json["roles"] {
+                    tokenInfo.roles = "\(roles)"
+                }
+
+                if let authSoapServiceManagerDelegate =  soapServiceManagerDelegate as? AuthSoapServiceManagerDelegate {
+                    authSoapServiceManagerDelegate.tokenInfoReceived(value: tokenInfo)
+                }
+            }
+        } catch let error as NSError {
+            soapServiceManagerDelegate?.errorReceived(value: error.localizedDescription)
+        }
     }
 }
