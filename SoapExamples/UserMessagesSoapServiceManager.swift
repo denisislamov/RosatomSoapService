@@ -34,7 +34,6 @@ class UserMessageSoapServiceManager : SoapServiceManager {
     }
 
     private func parsingUserMessages(input: String) -> SoapServiceResult<String> {
-        print(input)
         if input.contains("<messages>") {
             var result = input.removeEmptyLines();
             result = result?.slice(from: "Optional(", to: ")")!

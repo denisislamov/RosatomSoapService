@@ -14,9 +14,10 @@ class ViewController: UIViewController,
                       UserInfoSoapServiceManagerDelegate,
                       UserScheduleSoapServiceManagerDelegate,
                       UserMessageSoapServiceManagerDelegate,
-UserInAppSoapServiceManagerDelegate {
-    let login : String  = "vg_01";
-    let pass : String   = "vg_01";
+                      UserInAppSoapServiceManagerDelegate,
+TutorEventsSoapServiceManagerDelegate {
+    let login : String  = "kmansurov";
+    let pass : String   = "hg6Ty23";
     let secret : String = "test_secret";
 
     var authSoapServiceManager : AuthSoapServiceManager!
@@ -25,6 +26,7 @@ UserInAppSoapServiceManagerDelegate {
     var userMessageSoapServiceManager : UserMessageSoapServiceManager!
     var userInAppSoapServiceManager: UserInAppSoapServiceManager!
     var analyticsDataSoapServiceManager : AnalyticsDataSoapServiceManager!
+    var tutorEventsSoapServiceManager : TutorEventsSoapServiceManager!
 
     var token : String = ""
     var userInfo : UserInfo = UserInfo()
@@ -43,6 +45,8 @@ UserInAppSoapServiceManagerDelegate {
         userInAppSoapServiceManager    = UserInAppSoapServiceManager   (soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
         analyticsDataSoapServiceManager = AnalyticsDataSoapServiceManager(soapWebServiceDelegateRef: self,
                                                                           soapUrl: RosatomSoapMessages.soapServiceUrl)
+        tutorEventsSoapServiceManager = TutorEventsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+
     }
 
     @IBAction func btnClicked(sender: AnyObject) {
@@ -79,6 +83,10 @@ UserInAppSoapServiceManagerDelegate {
 
     @IBAction func SendAnalyticsData(_ sender: Any) {
         analyticsDataSoapServiceManager.sendAnalyticsData(token: token, data: "1,2,3,4,5")
+    }
+
+    @IBAction func GetTutorEvents(_ sender: Any) {
+        tutorEventsSoapServiceManager.getTurorEvents(token: token)
     }
 
     func tokenReceived(value : String) {
@@ -118,6 +126,11 @@ UserInAppSoapServiceManagerDelegate {
     func userInAppTokenReceived(value: String) {
         print(value)
     }
+
+    func tutorEventsReceived(value: [TutorEvent]) {
+        print(value)
+    }
+
     
     func errorReceived(value : String) {
         print("error: " + value)

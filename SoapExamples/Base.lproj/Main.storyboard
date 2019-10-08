@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="gGM-ay-cr1">
-                                <rect key="frame" x="122" y="148" width="171" height="601"/>
+                                <rect key="frame" x="122" y="148" width="171" height="664"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25d-DE-g5T">
                                         <rect key="frame" x="0.0" y="0.0" width="171" height="30"/>
@@ -73,25 +73,28 @@
                                             <action selector="GetInAppToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ARz-En-s28"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-UX-2eS" userLabel="Send Analytics Data">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4h-4S-8eD" userLabel="Get Tutor Events">
                                         <rect key="frame" x="0.0" y="508" width="171" height="30"/>
+                                        <state key="normal" title="Get Tutor Events"/>
+                                        <connections>
+                                            <action selector="GetTutorEvents:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ln-eG-MKQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-UX-2eS" userLabel="Send Analytics Data">
+                                        <rect key="frame" x="0.0" y="571" width="171" height="30"/>
                                         <state key="normal" title="Send Analytics Data"/>
                                         <connections>
                                             <action selector="SendAnalyticsData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CK5-X2-0iR"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxS-KS-nw1">
-                                        <rect key="frame" x="0.0" y="571" width="171" height="30"/>
+                                        <rect key="frame" x="0.0" y="634" width="171" height="30"/>
                                         <state key="normal" title="logout"/>
                                         <connections>
                                             <action selector="logoutBtnClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EPd-eL-0h1"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="601" id="DRQ-h8-Ixb"/>
-                                    <constraint firstAttribute="width" constant="171" id="V1t-bM-pn8"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

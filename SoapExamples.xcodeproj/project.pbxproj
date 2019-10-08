@@ -11,12 +11,15 @@
 		6371CD71233CC2F8001A386E /* UserGroupParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */; };
 		637A69092339A8ED00BD0914 /* RosatomSoapMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */; };
 		637A690B233A587300BD0914 /* SoapWebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */; };
+		639E5F7C234AAAB7009F0E67 /* RssNewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E5F7B234AAAB7009F0E67 /* RssNewsManager.swift */; };
+		639E5F7E234C9489009F0E67 /* TutorEventsParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E5F7D234C9489009F0E67 /* TutorEventsParserDelegate.swift */; };
 		63BC75DD2346298600491695 /* AuthSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75DC2346298600491695 /* AuthSoapServiceManager.swift */; };
 		63BC75DF234634A900491695 /* UserInfoSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75DE234634A900491695 /* UserInfoSoapServiceManager.swift */; };
 		63BC75E123463ACF00491695 /* UserScheduleSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75E023463ACF00491695 /* UserScheduleSoapServiceManager.swift */; };
 		63BC75E323463F5800491695 /* UserMessagesSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75E223463F5800491695 /* UserMessagesSoapServiceManager.swift */; };
 		63BC75E52346457F00491695 /* UserInAppSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75E42346457F00491695 /* UserInAppSoapServiceManager.swift */; };
 		63BC75E723464A4700491695 /* AnalyticsDataSoapServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75E623464A4700491695 /* AnalyticsDataSoapServiceDelegate.swift */; };
+		63D2A6D72347E8860044848B /* TutorEventsSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D2A6D62347E8860044848B /* TutorEventsSoapServiceManager.swift */; };
 		63FD743B2342A44700AC5347 /* UserMessageParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FD743A2342A44700AC5347 /* UserMessageParserDelegate.swift */; };
 		BF046524F764B9CC2068375B /* UserScheduleParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0AF984EF8922199B10C148 /* UserScheduleParserDelegate.swift */; };
 		BF047063B7DEC0F6E8E5BCF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF077E3AD9385EAF61B469DF /* AppDelegate.swift */; };
@@ -50,12 +53,15 @@
 		630BF5022345FDA70011A751 /* SoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapServiceManager.swift; sourceTree = "<group>"; };
 		6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupParserDelegate.swift; sourceTree = "<group>"; };
 		637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosatomSoapMessages.swift; sourceTree = "<group>"; };
+		639E5F7B234AAAB7009F0E67 /* RssNewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssNewsManager.swift; sourceTree = "<group>"; };
+		639E5F7D234C9489009F0E67 /* TutorEventsParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorEventsParserDelegate.swift; sourceTree = "<group>"; };
 		63BC75DC2346298600491695 /* AuthSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75DE234634A900491695 /* UserInfoSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75E023463ACF00491695 /* UserScheduleSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScheduleSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75E223463F5800491695 /* UserMessagesSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessagesSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75E42346457F00491695 /* UserInAppSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInAppSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75E623464A4700491695 /* AnalyticsDataSoapServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsDataSoapServiceDelegate.swift; sourceTree = "<group>"; };
+		63D2A6D62347E8860044848B /* TutorEventsSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorEventsSoapServiceManager.swift; sourceTree = "<group>"; };
 		63FD743A2342A44700AC5347 /* UserMessageParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessageParserDelegate.swift; sourceTree = "<group>"; };
 		BF000C8F0D9BFCC27A518FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		BF0421457F88D227EBA9363D /* SoapExamplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoapExamplesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +117,7 @@
 				BF07A1F6F1DAC178917039B9 /* ViewController.swift */,
 				637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */,
 				BF0856E981EB8F5B4CC519E1 /* RosatomSoapWebServiceStructs.swift */,
+				639E5F7B234AAAB7009F0E67 /* RssNewsManager.swift */,
 				6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */,
 				BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */,
 				63BC75E623464A4700491695 /* AnalyticsDataSoapServiceDelegate.swift */,
@@ -118,10 +125,12 @@
 				630BF5022345FDA70011A751 /* SoapServiceManager.swift */,
 				63BC75DC2346298600491695 /* AuthSoapServiceManager.swift */,
 				63BC75DE234634A900491695 /* UserInfoSoapServiceManager.swift */,
+				63D2A6D62347E8860044848B /* TutorEventsSoapServiceManager.swift */,
 				63BC75E223463F5800491695 /* UserMessagesSoapServiceManager.swift */,
 				63BC75E023463ACF00491695 /* UserScheduleSoapServiceManager.swift */,
 				BF0AF984EF8922199B10C148 /* UserScheduleParserDelegate.swift */,
 				63FD743A2342A44700AC5347 /* UserMessageParserDelegate.swift */,
+				639E5F7D234C9489009F0E67 /* TutorEventsParserDelegate.swift */,
 			);
 			path = SoapExamples;
 			sourceTree = "<group>";
@@ -287,13 +296,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D2A6D72347E8860044848B /* TutorEventsSoapServiceManager.swift in Sources */,
 				63BC75DD2346298600491695 /* AuthSoapServiceManager.swift in Sources */,
 				630BF5032345FDA80011A751 /* SoapServiceManager.swift in Sources */,
 				637A690B233A587300BD0914 /* SoapWebServiceManager.swift in Sources */,
 				63BC75E323463F5800491695 /* UserMessagesSoapServiceManager.swift in Sources */,
 				637A69092339A8ED00BD0914 /* RosatomSoapMessages.swift in Sources */,
 				BF047063B7DEC0F6E8E5BCF6 /* AppDelegate.swift in Sources */,
+				639E5F7C234AAAB7009F0E67 /* RssNewsManager.swift in Sources */,
 				BF0D34DFB53B2167A2C56F73 /* ViewController.swift in Sources */,
+				639E5F7E234C9489009F0E67 /* TutorEventsParserDelegate.swift in Sources */,
 				63BC75E123463ACF00491695 /* UserScheduleSoapServiceManager.swift in Sources */,
 				63BC75E723464A4700491695 /* AnalyticsDataSoapServiceDelegate.swift in Sources */,
 				6371CD71233CC2F8001A386E /* UserGroupParserDelegate.swift in Sources */,

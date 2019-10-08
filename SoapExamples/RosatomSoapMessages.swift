@@ -52,10 +52,12 @@ class RosatomSoapMessages {
     }
 
     public static func sendAnalyticsData(token: String, data: String) -> String {
-           "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:SetLog>\n         <sdo:log><![CDATA[\(data)\n         ]]></sdo:log>\n      </sdo:SetLog>\n   </soapenv:Body>\n</soapenv:Envelope>"
+           "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:SetLog>\n         <sdo:log><![CDATA[\(data)\n         ]]></sdo:log>\n      </sdo:SetLog>\n   /Users/a1/AppcodeProjects/SoapExamples/SoapExamples/UserMessagesSoapServiceManager.swift</soapenv:Body>\n</soapenv:Envelope>"
     }
 
     public static func getTutorEvents(token: String) -> String {
            "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetTutorEvents></sdo:GetTutorEvents>\n   </soapenv:Body>\n</soapenv:Envelope>"
     }
+
+
 }

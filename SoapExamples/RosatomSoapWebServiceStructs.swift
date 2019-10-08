@@ -61,3 +61,22 @@ struct Message {
     public var isNew : String = ""
     public var isMy : String = ""
 }
+
+struct TutorEvent {
+    public var id : String = ""
+    public var name : String = ""
+    public var code : String = ""
+    public var startDate : String = ""
+    public var finishDate : String = ""
+    public var status : String = ""
+    public var personNum : String = ""
+    public var place : String = ""
+}
+
+struct RssNewsArticle {
+    public var title : String = ""
+    public var link : String = ""
+    public var imageUrl : String = ""
+    public var time : String = ""
+    public var hash : String = ""
+}
