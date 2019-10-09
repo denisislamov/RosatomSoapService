@@ -76,7 +76,6 @@ struct TutorEvent {
 struct RssNewsArticle {
     public var title : String = ""
     public var link : String = ""
+    public var pubDate : String = ""
     public var imageUrl : String = ""
-    public var time : String = ""
-    public var hash : String = ""
 }

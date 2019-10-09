@@ -15,7 +15,9 @@ class ViewController: UIViewController,
                       UserScheduleSoapServiceManagerDelegate,
                       UserMessageSoapServiceManagerDelegate,
                       UserInAppSoapServiceManagerDelegate,
-TutorEventsSoapServiceManagerDelegate {
+                      TutorEventsSoapServiceManagerDelegate,
+                      RssNewsManagerDelegate {
+
     let login : String  = "kmansurov";
     let pass : String   = "hg6Ty23";
     let secret : String = "test_secret";
@@ -27,6 +29,7 @@ TutorEventsSoapServiceManagerDelegate {
     var userInAppSoapServiceManager: UserInAppSoapServiceManager!
     var analyticsDataSoapServiceManager : AnalyticsDataSoapServiceManager!
     var tutorEventsSoapServiceManager : TutorEventsSoapServiceManager!
+    var rssNewsManager : RssNewsManager!
 
     var token : String = ""
     var userInfo : UserInfo = UserInfo()
@@ -46,11 +49,12 @@ TutorEventsSoapServiceManagerDelegate {
         analyticsDataSoapServiceManager = AnalyticsDataSoapServiceManager(soapWebServiceDelegateRef: self,
                                                                           soapUrl: RosatomSoapMessages.soapServiceUrl)
         tutorEventsSoapServiceManager = TutorEventsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
-
+        rssNewsManager = RssNewsManager(rssNewsManagerDelegateRef : self)
     }
 
     @IBAction func btnClicked(sender: AnyObject) {
         authSoapServiceManager.getToken(login: login, pass: pass, secret: secret)
+        rssNewsManager.startParsingWithContentsOfURL()
     }
 
     @IBAction func SendMessage(_ sender: Any) {
@@ -131,8 +135,11 @@ TutorEventsSoapServiceManagerDelegate {
         print(value)
     }
 
-    
     func errorReceived(value : String) {
         print("error: " + value)
+    }
+
+    func rssNewsReceived(value: [RssNewsArticle]) {
+        print(value)
     }
 }
