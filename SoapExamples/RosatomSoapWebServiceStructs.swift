@@ -79,3 +79,9 @@ struct RssNewsArticle {
     public var pubDate : String = ""
     public var imageUrl : String = ""
 }
+
+struct TutorPoll {
+    public var id : String = ""
+    public var code : String = ""
+    public var name : String = ""
+}

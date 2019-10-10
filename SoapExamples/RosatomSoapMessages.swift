@@ -59,5 +59,7 @@ class RosatomSoapMessages {
            "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetTutorEvents></sdo:GetTutorEvents>\n   </soapenv:Body>\n</soapenv:Envelope>"
     }
 
-
+    public static func getAllPolls(token: String) -> String {
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetAllPolls></sdo:GetAllPolls>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
 }

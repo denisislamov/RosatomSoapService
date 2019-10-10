@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		630BF5032345FDA80011A751 /* SoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BF5022345FDA70011A751 /* SoapServiceManager.swift */; };
+		636FE8CF234FD4110062B17D /* TutorPollsSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FE8CE234FD4110062B17D /* TutorPollsSoapServiceManager.swift */; };
 		6371CD71233CC2F8001A386E /* UserGroupParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */; };
 		637A69092339A8ED00BD0914 /* RosatomSoapMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */; };
 		637A690B233A587300BD0914 /* SoapWebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07D0ECBA85A477D45E3F17 /* SoapWebServiceManager.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		630BF5022345FDA70011A751 /* SoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapServiceManager.swift; sourceTree = "<group>"; };
+		636FE8CE234FD4110062B17D /* TutorPollsSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorPollsSoapServiceManager.swift; sourceTree = "<group>"; };
 		6371CD70233CC2F8001A386E /* UserGroupParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupParserDelegate.swift; sourceTree = "<group>"; };
 		637A69082339A8ED00BD0914 /* RosatomSoapMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosatomSoapMessages.swift; sourceTree = "<group>"; };
 		639E5F7B234AAAB7009F0E67 /* RssNewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssNewsManager.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				63D2A6D62347E8860044848B /* TutorEventsSoapServiceManager.swift */,
 				63BC75E223463F5800491695 /* UserMessagesSoapServiceManager.swift */,
 				63BC75E023463ACF00491695 /* UserScheduleSoapServiceManager.swift */,
+				636FE8CE234FD4110062B17D /* TutorPollsSoapServiceManager.swift */,
 				BF0AF984EF8922199B10C148 /* UserScheduleParserDelegate.swift */,
 				63FD743A2342A44700AC5347 /* UserMessageParserDelegate.swift */,
 				639E5F7D234C9489009F0E67 /* TutorEventsParserDelegate.swift */,
@@ -310,6 +313,7 @@
 				63BC75E723464A4700491695 /* AnalyticsDataSoapServiceDelegate.swift in Sources */,
 				6371CD71233CC2F8001A386E /* UserGroupParserDelegate.swift in Sources */,
 				BF05E9E8E432C5CBFD01C5A5 /* RosatomSoapWebServiceStructs.swift in Sources */,
+				636FE8CF234FD4110062B17D /* TutorPollsSoapServiceManager.swift in Sources */,
 				63FD743B2342A44700AC5347 /* UserMessageParserDelegate.swift in Sources */,
 				BF046524F764B9CC2068375B /* UserScheduleParserDelegate.swift in Sources */,
 				63BC75E52346457F00491695 /* UserInAppSoapServiceManager.swift in Sources */,
