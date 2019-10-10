@@ -142,4 +142,8 @@ class ViewController: UIViewController,
     func rssNewsReceived(value: [RssNewsArticle]) {
         print(value)
     }
+
+    func rssErrorReceived(value: String) {
+        print(value)
+    }
 }

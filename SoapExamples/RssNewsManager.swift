@@ -10,6 +10,7 @@ import Foundation
 
 protocol RssNewsManagerDelegate : class {
     func rssNewsReceived(value: [RssNewsArticle])
+    func rssErrorReceived(value : String)
 }
 
 class RssNewsManager : NSObject, XMLParserDelegate {
@@ -30,10 +31,17 @@ class RssNewsManager : NSObject, XMLParserDelegate {
     }
 
     public func startParsingWithContentsOfURL() {
-        let xmlParser = XMLParser(contentsOf: URL(string: url)!)
-        xmlParser?.delegate = self
-        if xmlParser!.parse() {
+        guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else {
+            rssNewsManagerDelegate.rssErrorReceived(value: "Cannot Read Data")
+            return
+        }
+
+        xmlParser.delegate = self
+        if xmlParser.parse() {
             rssNewsManagerDelegate.rssNewsReceived(value: self.rssNewsArticles)
+        } else {
+            let error = xmlParser.parserError!
+            rssNewsManagerDelegate.rssErrorReceived(value: "Can't parse rss feed: \(error.localizedDescription)\n line: \(xmlParser.lineNumber)")
         }
     }
 
