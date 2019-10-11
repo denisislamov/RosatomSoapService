@@ -34,6 +34,8 @@ class TutorPollsSoapServiceManager : SoapServiceManager {
                     return SoapServiceResult.Success("Success get tutor polls info")
                 }
             }
+        } else if input.contains("GetAllPollsResponse") {
+            return SoapServiceResult.Success("No tutor polls for this user")
         }
 
         let errorDescription = errorHandler(value: input)

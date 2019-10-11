@@ -16,6 +16,7 @@ class ViewController: UIViewController,
                       UserMessageSoapServiceManagerDelegate,
                       UserInAppSoapServiceManagerDelegate,
                       TutorEventsSoapServiceManagerDelegate,
+                      TutorPollsSoapServiceManagerDelegate,
                       RssNewsManagerDelegate {
 
     let login : String  = "kmansurov";
@@ -29,6 +30,8 @@ class ViewController: UIViewController,
     var userInAppSoapServiceManager: UserInAppSoapServiceManager!
     var analyticsDataSoapServiceManager : AnalyticsDataSoapServiceManager!
     var tutorEventsSoapServiceManager : TutorEventsSoapServiceManager!
+    var tutorPollsSoapServiceManager: TutorPollsSoapServiceManager!
+
     var rssNewsManager : RssNewsManager!
 
     var token : String = ""
@@ -49,6 +52,7 @@ class ViewController: UIViewController,
         analyticsDataSoapServiceManager = AnalyticsDataSoapServiceManager(soapWebServiceDelegateRef: self,
                                                                           soapUrl: RosatomSoapMessages.soapServiceUrl)
         tutorEventsSoapServiceManager = TutorEventsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        tutorPollsSoapServiceManager = TutorPollsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
         rssNewsManager = RssNewsManager(rssNewsManagerDelegateRef : self)
     }
 
@@ -91,6 +95,7 @@ class ViewController: UIViewController,
 
     @IBAction func GetTutorEvents(_ sender: Any) {
         tutorEventsSoapServiceManager.getTurorEvents(token: token)
+        tutorPollsSoapServiceManager.getTutorPolls(token: token)
     }
 
     func tokenReceived(value : String) {
@@ -138,6 +143,11 @@ class ViewController: UIViewController,
     func errorReceived(value : String) {
         print("error: " + value)
     }
+
+    func tutorPollsReceived(value: [TutorPoll]) {
+        print(value)
+    }
+
 
     func rssNewsReceived(value: [RssNewsArticle]) {
         print(value)
