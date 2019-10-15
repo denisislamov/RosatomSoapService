@@ -16,7 +16,7 @@ class ViewController: UIViewController,
                       UserMessageSoapServiceManagerDelegate,
                       UserInAppSoapServiceManagerDelegate,
                       TutorEventsSoapServiceManagerDelegate,
-                      TutorPollsSoapServiceManagerDelegate,
+                      PollsSoapServiceManagerDelegate,
                       RssNewsManagerDelegate {
 
     let login : String  = "kmansurov";

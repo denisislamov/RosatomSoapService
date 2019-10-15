@@ -91,3 +91,9 @@ struct RunPollData {
     public var assigned : String = ""
     public var pollProcedureId : String = ""
 }
+
+struct PollProcedureData {
+    public var id : String = ""
+    public var code : String = ""
+    public var name : String = ""
+}

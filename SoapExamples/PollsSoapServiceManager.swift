@@ -21,7 +21,7 @@ class PollsSoapServiceManager : SoapServiceManager {
         })
     }
 
-    private func TutorPolls(input: String) -> SoapServiceResult<String> {
+    private func parsingTutorPolls(input: String) -> SoapServiceResult<String> {
         print(input)
         if input.contains("<polls>") {
             var result = input.removeEmptyLines();
