@@ -30,7 +30,7 @@ class ViewController: UIViewController,
     var userInAppSoapServiceManager: UserInAppSoapServiceManager!
     var analyticsDataSoapServiceManager : AnalyticsDataSoapServiceManager!
     var tutorEventsSoapServiceManager : TutorEventsSoapServiceManager!
-    var tutorPollsSoapServiceManager: TutorPollsSoapServiceManager!
+    var pollsSoapServiceManager: PollsSoapServiceManager!
 
     var rssNewsManager : RssNewsManager!
 
@@ -52,7 +52,7 @@ class ViewController: UIViewController,
         analyticsDataSoapServiceManager = AnalyticsDataSoapServiceManager(soapWebServiceDelegateRef: self,
                                                                           soapUrl: RosatomSoapMessages.soapServiceUrl)
         tutorEventsSoapServiceManager = TutorEventsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
-        tutorPollsSoapServiceManager = TutorPollsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+        pollsSoapServiceManager = PollsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
         rssNewsManager = RssNewsManager(rssNewsManagerDelegateRef : self)
     }
 
@@ -95,7 +95,7 @@ class ViewController: UIViewController,
 
     @IBAction func GetTutorEvents(_ sender: Any) {
         tutorEventsSoapServiceManager.getTurorEvents(token: token)
-        tutorPollsSoapServiceManager.getTutorPolls(token: token)
+        pollsSoapServiceManager.getTutorPolls(token: token)
     }
 
     func tokenReceived(value : String) {

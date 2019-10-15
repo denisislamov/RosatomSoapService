@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol TutorPollsSoapServiceManagerDelegate : SoapServiceManagerDelegate {
+protocol PollsSoapServiceManagerDelegate : SoapServiceManagerDelegate {
     func tutorPollsReceived(value: [TutorPoll])
 }
 
-class TutorPollsSoapServiceManager : SoapServiceManager {
+class PollsSoapServiceManager : SoapServiceManager {
     public func getTutorPolls(token: String) {
         let soapAuthMessage : String = RosatomSoapMessages.getAllPolls(token: token)
 
@@ -21,16 +21,16 @@ class TutorPollsSoapServiceManager : SoapServiceManager {
         })
     }
 
-    private func parsingTutorPolls(input: String) -> SoapServiceResult<String> {
+    private func TutorPolls(input: String) -> SoapServiceResult<String> {
         print(input)
         if input.contains("<polls>") {
             var result = input.removeEmptyLines();
             result = result?.slice(from: "Optional(", to: ")")!
 
-            let delegate = TutorPollParserDelegate()
+            let delegate = PollParserDelegate()
             if xmlParserRespond(input: result!, xmlParserDelegate: delegate) {
-                if let tutorPollsSoapServiceManagerDelegate =  soapServiceManagerDelegate as? TutorPollsSoapServiceManagerDelegate {
-                    tutorPollsSoapServiceManagerDelegate.tutorPollsReceived(value: delegate.tutorPolls)
+                if let PollsSoapServiceManagerDelegate =  soapServiceManagerDelegate as? PollsSoapServiceManagerDelegate {
+                    PollsSoapServiceManagerDelegate.tutorPollsReceived(value: delegate.tutorPolls)
                     return SoapServiceResult.Success("Success get tutor polls info")
                 }
             }
@@ -44,7 +44,7 @@ class TutorPollsSoapServiceManager : SoapServiceManager {
     }
 }
 
-class TutorPollParserDelegate : NSObject, XMLParserDelegate {
+class PollParserDelegate : NSObject, XMLParserDelegate {
     var tutorPolls : [TutorPoll] = []
     var newTutorPoll : TutorPoll? = nil
 

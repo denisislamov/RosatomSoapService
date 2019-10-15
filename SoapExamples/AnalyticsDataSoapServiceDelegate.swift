@@ -26,5 +26,4 @@ class AnalyticsDataSoapServiceManager : SoapServiceManager {
         soapServiceManagerDelegate?.errorReceived(value: errorDescription)
         return SoapServiceResult.Failure(errorDescription)
     }
-
 }

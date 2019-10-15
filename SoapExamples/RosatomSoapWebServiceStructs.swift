@@ -85,3 +85,9 @@ struct TutorPoll {
     public var code : String = ""
     public var name : String = ""
 }
+
+struct RunPollData {
+    public var all : String = ""
+    public var assigned : String = ""
+    public var pollProcedureId : String = ""
+}

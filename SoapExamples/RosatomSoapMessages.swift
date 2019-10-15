@@ -62,4 +62,16 @@ class RosatomSoapMessages {
     public static func getAllPolls(token: String) -> String {
         "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetAllPolls></sdo:GetAllPolls>\n   </soapenv:Body>\n</soapenv:Envelope>"
     }
+
+    public static func runPull(token: String, eventId: String) -> String {
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:RunPoll>\n         <sdo:event_id>\(eventId)</sdo:event_id>\n         <sdo:poll_id>6737164522729209476</sdo:poll_id>\n      </sdo:RunPoll>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
+
+    public static func savePull(token: String, pollProcedureId: String, data: String) -> String {
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:SavePoll>\n         <sdo:poll_procedure_id>\(pollProcedureId)</sdo:poll_procedure_id>\n         <sdo:data><![CDATA[[\(data)]]]></sdo:data>\n      </sdo:SavePoll>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
+
+    public static func stopPull(token: String, pollProcedureId: String) -> String {
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:StopPoll>\n         <sdo:poll_procedure_id>\(pollProcedureId)</sdo:poll_procedure_id>\n      </sdo:StopPoll>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
 }
