@@ -78,4 +78,8 @@ class RosatomSoapMessages {
     public static func getPollProcedures(token: String, eventId: String) -> String {
         "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetPollProcedures>\n         <sdo:event_id>\(eventId)</sdo:event_id>\n      </sdo:GetPollProcedures>\n   </soapenv:Body>\n</soapenv:Envelope>"
     }
+
+    public static func getPoll(token: String, pollProcedureId: String) -> String {
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sdo=\"http://sdo-test.scicet.local/\">\n   <soapenv:Header>\n      <sdo:Token>\n         <sdo:authtoken>\(token)</sdo:authtoken>\n      </sdo:Token>\n   </soapenv:Header>\n   <soapenv:Body>\n      <sdo:GetPoll>\n         <sdo:poll_procedure_id>\(pollProcedureId)</sdo:poll_procedure_id>\n      </sdo:GetPoll>\n   </soapenv:Body>\n</soapenv:Envelope>"
+    }
 }

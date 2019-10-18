@@ -97,3 +97,17 @@ struct PollProcedureData {
     public var code : String = ""
     public var name : String = ""
 }
+
+struct PollQuestion {
+    public var id : String = ""
+    public var type : String = ""
+    public var text : String = ""
+
+    public var pollQuestionEntry : [PollQuestionEntry] = []
+}
+
+struct PollQuestionEntry {
+    public var id : String = ""
+    public var value : String = ""
+    public var order : String = ""
+}
