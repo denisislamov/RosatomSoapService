@@ -29,8 +29,8 @@ class GetPollSoapServiceManager : SoapServiceManager {
 
             let delegate = GetPollDelegate()
             if xmlParserRespond(input: result!, xmlParserDelegate: delegate) {
-                if let getPollProceduresServiceManagerDelegate =  soapServiceManagerDelegate as? GetPollServiceManagerDelegate {
-                    getPollProceduresServiceManagerDelegate.getPollReceived(value: delegate.pollQuestions)
+                if let getPollServiceManagerDelegate =  soapServiceManagerDelegate as? GetPollServiceManagerDelegate {
+                    getPollServiceManagerDelegate.getPollReceived(value: delegate.pollQuestions)
                     return SoapServiceResult.Success("Success get poll")
                 }
             }
