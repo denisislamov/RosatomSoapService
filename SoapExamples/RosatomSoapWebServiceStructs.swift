@@ -104,6 +104,9 @@ struct PollQuestion {
     public var text : String = ""
 
     public var pollQuestionEntry : [PollQuestionEntry] = []
+
+    public var answer : String = ""
+    public var isAnswered : String = ""
 }
 
 struct PollQuestionEntry {

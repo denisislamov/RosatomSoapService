@@ -51,7 +51,7 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
     var pollQuestionEntries : [PollQuestionEntry] = []
     var newPollQuestionEntry : PollQuestionEntry? = nil
 
-    enum StatePollQuestion { case none, id, type, text }
+    enum StatePollQuestion { case none, id, type, text, answer, isAnswered }
     var statePollQuestion : StatePollQuestion = .none
 
     enum StateEntry { case none, id, value, order }
@@ -70,6 +70,8 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
             }
         case "type":
             self.statePollQuestion = .type
+        case "text":
+            self.statePollQuestion = .text
         case "entry":
            self.newPollQuestionEntry = PollQuestionEntry()
            self.stateEntry = .none
@@ -77,8 +79,10 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
            self.stateEntry = .value
         case "order":
            self.stateEntry = .order
-        case "text":
-            self.statePollQuestion = .text
+        case "answer":
+            self.statePollQuestion = .answer
+        case "is_answered":
+            self.statePollQuestion = .isAnswered
         default:
             self.statePollQuestion = .none
             self.stateEntry = .none
@@ -117,6 +121,10 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
             self.newPollQuestion!.type = string
         case .text:
             self.newPollQuestion!.text = string
+        case .answer:
+            self.newPollQuestion!.answer = string
+        case .isAnswered:
+            self.newPollQuestion!.isAnswered = string
         default:
             break
         }
