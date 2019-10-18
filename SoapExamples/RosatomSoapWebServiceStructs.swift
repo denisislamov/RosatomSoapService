@@ -103,7 +103,7 @@ struct PollQuestion {
     public var type : String = ""
     public var text : String = ""
 
-    public var pollQuestionEntry : [PollQuestionEntry] = []
+    public var pollQuestionEntries : [PollQuestionEntry] = []
 
     public var answer : String = ""
     public var isAnswered : String = ""
@@ -113,4 +113,19 @@ struct PollQuestionEntry {
     public var id : String = ""
     public var value : String = ""
     public var order : String = ""
+}
+
+
+struct PollQuestionResult {
+    public var id : String = ""
+    public var text : String = ""
+
+    public var pollQuestionResultEntries : [PollQuestionResultEntry] = []
+}
+
+struct PollQuestionResultEntry {
+    public var id : String = ""
+    public var value : String = ""
+    public var order : String = ""
+    public var answerNum : String = ""
 }

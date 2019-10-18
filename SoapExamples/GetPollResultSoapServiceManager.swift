@@ -1,18 +1,18 @@
 //
-//  GetPoll.swift
+//  GetPollResultSoapServiceManager.swift
 //  SoapExamples
 //
-//  Created by Denis Islamov on 16/10/2019.
+//  Created by Denis Islamov on 18/10/2019.
 //  Copyright © 2019 ___FORMIKALAB___. All rights reserved.
 //
 
 import Foundation
 
-protocol GetPollServiceManagerDelegate : SoapServiceManagerDelegate {
-    func getPollReceived(value: [PollQuestion])
+protocol GetPollResultServiceManagerDelegate : SoapServiceManagerDelegate {
+    func getPollReceived(value: [PollQuestionResult])
 }
 
-class GetPollSoapServiceManager : SoapServiceManager {
+class GetPollResultSoapServiceManager : SoapServiceManager {
     public func getPoll(token: String, pollProcedureId: String) {
         let soapAuthMessage : String = RosatomSoapMessages.getPoll(token: token, pollProcedureId: pollProcedureId)
 
@@ -27,15 +27,15 @@ class GetPollSoapServiceManager : SoapServiceManager {
             var result = input.removeEmptyLines();
             result = result?.slice(from: "Optional(", to: ")")!
 
-            let delegate = GetPollDelegate()
+            let delegate = GetPollResultDelegate()
             if xmlParserRespond(input: result!, xmlParserDelegate: delegate) {
-                if let getPollServiceManagerDelegate =  soapServiceManagerDelegate as? GetPollServiceManagerDelegate {
+                if let getPollServiceManagerDelegate =  soapServiceManagerDelegate as? GetPollResultServiceManagerDelegate {
                     getPollServiceManagerDelegate.getPollReceived(value: delegate.pollQuestions)
-                    return SoapServiceResult.Success("Success get poll")
+                    return SoapServiceResult.Success("Success get poll result")
                 }
             }
-        } else if input.contains("GetPollResponse") {
-            return SoapServiceResult.Success("Can't get poll for this user")
+        } else if input.contains("GetPollResultResponse") {
+            return SoapServiceResult.Success("Can't get poll result for this user")
         }
 
         let errorDescription = errorHandler(value: input)
@@ -44,23 +44,23 @@ class GetPollSoapServiceManager : SoapServiceManager {
     }
 }
 
-class GetPollDelegate : NSObject, XMLParserDelegate {
-    var pollQuestions : [PollQuestion] = []
-    var newPollQuestion : PollQuestion? = nil
+class GetPollResultDelegate : NSObject, XMLParserDelegate {
+    var pollQuestions : [PollQuestionResult] = []
+    var newPollQuestion : PollQuestionResult? = nil
 
-    var pollQuestionEntries : [PollQuestionEntry] = []
-    var newPollQuestionEntry : PollQuestionEntry? = nil
+    var pollQuestionEntries : [PollQuestionResultEntry] = []
+    var newPollQuestionEntry : PollQuestionResultEntry? = nil
 
-    enum StatePollQuestion { case none, id, type, text, answer, isAnswered }
+    enum StatePollQuestion { case none, id, text }
     var statePollQuestion : StatePollQuestion = .none
 
-    enum StateEntry { case none, id, value, order }
+    enum StateEntry { case none, id, value, order, answerNum }
     var stateEntry : StateEntry = .none
 
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         switch elementName {
         case "question":
-            self.newPollQuestion = PollQuestion()
+            self.newPollQuestion = PollQuestionResult()
             self.statePollQuestion = .none
         case "id":
             if self.newPollQuestionEntry == nil {
@@ -68,21 +68,17 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
             } else {
                 self.stateEntry = .id
             }
-        case "type":
-            self.statePollQuestion = .type
         case "text":
             self.statePollQuestion = .text
         case "entry":
-           self.newPollQuestionEntry = PollQuestionEntry()
+           self.newPollQuestionEntry = PollQuestionResultEntry()
            self.stateEntry = .none
         case "value":
            self.stateEntry = .value
         case "order":
            self.stateEntry = .order
-        case "answer":
-            self.statePollQuestion = .answer
-        case "is_answered":
-            self.statePollQuestion = .isAnswered
+        case "answer_num":
+            self.stateEntry = .answerNum
         default:
             self.statePollQuestion = .none
             self.stateEntry = .none
@@ -98,7 +94,7 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
         self.stateEntry = .none
 
         if elementName == "entry" && self.newPollQuestion != nil {
-            self.newPollQuestion!.pollQuestionEntries = self.pollQuestionEntries
+            self.newPollQuestion!.pollQuestionResultEntries = self.pollQuestionEntries
         }
 
         if let newPollQuestion = self.newPollQuestion, elementName == "question" {
@@ -117,14 +113,8 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
             if self.newPollQuestionEntry == nil {
                 self.newPollQuestion!.id = string
             }
-        case .type:
-            self.newPollQuestion!.type = string
         case .text:
             self.newPollQuestion!.text = string
-        case .answer:
-            self.newPollQuestion!.answer = string
-        case .isAnswered:
-            self.newPollQuestion!.isAnswered = string
         default:
             break
         }
@@ -138,8 +128,11 @@ class GetPollDelegate : NSObject, XMLParserDelegate {
             self.newPollQuestionEntry!.value = string
         case .order:
             self.newPollQuestionEntry!.order = string
+        case .answerNum:
+            self.newPollQuestionEntry!.answerNum = string
         default:
             break
         }
     }
 }
+

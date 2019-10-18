@@ -19,6 +19,7 @@
 		63A1986023567339001BED3B /* StopPollServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1985F23567339001BED3B /* StopPollServiceManager.swift */; };
 		63A198622356839C001BED3B /* GetPollProceduresSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A198612356839C001BED3B /* GetPollProceduresSoapServiceManager.swift */; };
 		63A198642357D43E001BED3B /* GetPollSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A198632357D43E001BED3B /* GetPollSoapServiceManager.swift */; };
+		63A198662359DD56001BED3B /* GetPollResultSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A198652359DD56001BED3B /* GetPollResultSoapServiceManager.swift */; };
 		63BC75DD2346298600491695 /* AuthSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75DC2346298600491695 /* AuthSoapServiceManager.swift */; };
 		63BC75DF234634A900491695 /* UserInfoSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75DE234634A900491695 /* UserInfoSoapServiceManager.swift */; };
 		63BC75E123463ACF00491695 /* UserScheduleSoapServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC75E023463ACF00491695 /* UserScheduleSoapServiceManager.swift */; };
@@ -67,6 +68,7 @@
 		63A1985F23567339001BED3B /* StopPollServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPollServiceManager.swift; sourceTree = "<group>"; };
 		63A198612356839C001BED3B /* GetPollProceduresSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPollProceduresSoapServiceManager.swift; sourceTree = "<group>"; };
 		63A198632357D43E001BED3B /* GetPollSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPollSoapServiceManager.swift; sourceTree = "<group>"; };
+		63A198652359DD56001BED3B /* GetPollResultSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPollResultSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75DC2346298600491695 /* AuthSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75DE234634A900491695 /* UserInfoSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSoapServiceManager.swift; sourceTree = "<group>"; };
 		63BC75E023463ACF00491695 /* UserScheduleSoapServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScheduleSoapServiceManager.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				63BC75E023463ACF00491695 /* UserScheduleSoapServiceManager.swift */,
 				63A198612356839C001BED3B /* GetPollProceduresSoapServiceManager.swift */,
 				63A198632357D43E001BED3B /* GetPollSoapServiceManager.swift */,
+				63A198652359DD56001BED3B /* GetPollResultSoapServiceManager.swift */,
 				636FE8CE234FD4110062B17D /* PollsSoapServiceManager.swift */,
 				636FE8D0235146750062B17D /* RunPollSoapServiceManager.swift */,
 				63A1985F23567339001BED3B /* StopPollServiceManager.swift */,
@@ -338,6 +341,7 @@
 				BF046524F764B9CC2068375B /* UserScheduleParserDelegate.swift in Sources */,
 				63BC75E52346457F00491695 /* UserInAppSoapServiceManager.swift in Sources */,
 				63BC75DF234634A900491695 /* UserInfoSoapServiceManager.swift in Sources */,
+				63A198662359DD56001BED3B /* GetPollResultSoapServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
