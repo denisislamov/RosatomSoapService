@@ -99,6 +99,7 @@ class GetPollResultDelegate : NSObject, XMLParserDelegate {
 
         if let newPollQuestion = self.newPollQuestion, elementName == "question" {
             self.pollQuestions.append(newPollQuestion)
+            self.pollQuestionEntries = []
             self.newPollQuestion = nil
         }
 

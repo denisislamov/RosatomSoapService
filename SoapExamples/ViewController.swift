@@ -17,6 +17,7 @@ class ViewController: UIViewController,
                       UserInAppSoapServiceManagerDelegate,
                       TutorEventsSoapServiceManagerDelegate,
                       PollsSoapServiceManagerDelegate,
+                      GetPollServiceManagerDelegate,
                       RssNewsManagerDelegate {
 
     let login : String  = "kmansurov";
@@ -31,6 +32,8 @@ class ViewController: UIViewController,
     var analyticsDataSoapServiceManager : AnalyticsDataSoapServiceManager!
     var tutorEventsSoapServiceManager : TutorEventsSoapServiceManager!
     var pollsSoapServiceManager: PollsSoapServiceManager!
+
+    var getPollSoapServiceManager: GetPollSoapServiceManager!
 
     var rssNewsManager : RssNewsManager!
 
@@ -53,12 +56,15 @@ class ViewController: UIViewController,
                                                                           soapUrl: RosatomSoapMessages.soapServiceUrl)
         tutorEventsSoapServiceManager = TutorEventsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
         pollsSoapServiceManager = PollsSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+
+        getPollSoapServiceManager = GetPollSoapServiceManager(soapWebServiceDelegateRef: self, soapUrl: RosatomSoapMessages.soapServiceUrl)
+            
         rssNewsManager = RssNewsManager(rssNewsManagerDelegateRef : self)
     }
 
     @IBAction func btnClicked(sender: AnyObject) {
         authSoapServiceManager.getToken(login: login, pass: pass, secret: secret)
-        rssNewsManager.startParsingWithContentsOfURL()
+        //rssNewsManager.startParsingWithContentsOfURL()
     }
 
     @IBAction func SendMessage(_ sender: Any) {
@@ -104,6 +110,8 @@ class ViewController: UIViewController,
         print(authSoapServiceManager.parseDecodeToken(input: token))
         userInfoSoapServiceManager.getUserInfo(token: value)
         userInfoSoapServiceManager.getUserGroup(token: value)
+
+        getPollSoapServiceManager.getPoll(token: token, pollProcedureId: "6750976488936797423")
     }
 
     func tokenInfoReceived(value: TokenInfo) {
@@ -154,6 +162,10 @@ class ViewController: UIViewController,
     }
 
     func rssErrorReceived(value: String) {
+        print(value)
+    }
+
+    func getPollReceived(value: [PollQuestion]) {
         print(value)
     }
 }
